@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; media-src 'self'; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'self'">
+<title>SlothMod — Make Real Minecraft Mods Visually or with Plain English</title>
+<meta name="description" content="SlothMod is a free Windows desktop studio that turns plain English — or six $0 offline visual studios — into real Java Edition Minecraft mods. Sculpt 3D voxel worlds, compose castles, shape NPC brains and living colonies, build whole-game overhauls, and play in minutes.">
+<meta name="theme-color" content="#14171f">
+<link rel="canonical" href="https://slothmod.com/">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+<link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="SlothMod">
+<meta property="og:title" content="SlothMod — Make Real Minecraft Mods Visually or with Plain English">
+<meta property="og:description" content="Turn plain English — or six $0 offline visual studios — into real Java Edition Minecraft mods. Free for Windows 10 & 11.">
+<meta property="og:url" content="https://slothmod.com/">
+<meta property="og:image" content="https://slothmod.com/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="SlothMod pixel sloth and title above a hotbar of pixel-art items made by the studio.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="SlothMod — Make Real Minecraft Mods Visually or with Plain English">
+<meta name="twitter:description" content="Turn plain English — or six $0 visual studios — into real Java Edition Minecraft mods. Free for Windows.">
+<meta name="twitter:image" content="https://slothmod.com/img/og.png">
+<meta name="twitter:image:alt" content="SlothMod pixel sloth and title above a hotbar of pixel-art items made by the studio.">
+<meta property="og:locale" content="en_US">
+<meta name="color-scheme" content="dark">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SlothMod","applicationCategory":"GameApplication","applicationSubCategory":"Minecraft mod maker and mod manager","operatingSystem":"Windows 10, Windows 11","softwareVersion":"1.0.0","description":"Free Windows desktop studio that turns plain English or six offline $0 visual studios into real Java Edition Minecraft mods for Fabric, NeoForge and Forge.","url":"https://slothmod.com/","downloadUrl":"https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe","image":"https://slothmod.com/img/og.png","license":"https://github.com/DeusesPR/SlothMod/blob/main/LICENSE","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<link rel="preload" href="fonts/pixelify-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:"Pixelify Sans";font-style:normal;font-weight:400;font-display:swap;src:url(fonts/pixelify-sans-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Pixelify Sans";font-style:normal;font-weight:700;font-display:swap;src:url(fonts/pixelify-sans-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"Sloth Digits";font-display:swap;unicode-range:U+0030-0039;size-adjust:127%;src:url(fonts/vt323-latin-400-normal.woff2) format("woff2")}
+
+:root{
+  --bg:#0e1015;
+  --surface:#171a22;
+  --surface-2:#202531;
+  --surface-3:#293040;
+  --slot-bg:#11141b;
+  --bevel-hi:#3d4458;
+  --bevel-lo:#090b0f;
+  --ink:#edf1f7;
+  --dim:#b5bfd1;
+  --muted:#8f9ab0;
+  --gold:#fcd34d;
+  --gold-lo:#b47f14;
+  --emerald:#358927;
+  --emerald-hi:#47ab36;
+  --emerald-glow:#7be04e;
+  --cyan:#5ce1e6;
+  --crimson:#e04f5f;
+  --line:#000000;
+  --px:"Sloth Digits","Pixelify Sans","Courier New",ui-monospace,Consolas,monospace;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:78px;overflow-x:clip}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:15.5px/1.55 var(--body);-webkit-text-size-adjust:100%;overflow-x:clip;
+}
+body.lb-open{overflow:hidden}
+img,canvas{image-rendering:pixelated}
+.shot,.smooth{image-rendering:auto}
+a{color:var(--gold);text-underline-offset:3px}
+a:hover{color:#fff}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;box-shadow:0 0 0 5px #000}
+.skip{position:absolute;left:-999px;top:14px;background:var(--gold);color:#000;padding:8px 14px;z-index:120;font:700 1rem var(--px);border:3px solid #000}
+.skip:focus{left:10px}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{font-family:var(--px);font-weight:700;line-height:1.15;letter-spacing:.01em;margin:0}
+h2{font-size:clamp(1.6rem,3.6vw,2.25rem);color:var(--gold);text-shadow:3px 3px 0 #000;margin-bottom:8px}
+h3{font-size:1.12rem;color:var(--ink)}
+.lede{color:var(--dim);max-width:740px;margin:0 0 24px;font-size:1rem}
+.lede strong{color:var(--ink)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.9em;background:#11141c;color:#c7f9cc;padding:1px 5px;border:1px solid #2f3646}
+kbd{display:inline-block;background:#262c3a;color:#fff;border:2px solid #000;box-shadow:inset 1px 1px 0 #4d566d,inset -1px -1px 0 #10131a;padding:0 6px;font:700 .86rem var(--px)}
+
+/* Textured section backdrops */
+.bg-deepslate{background:linear-gradient(rgba(14,16,22,.89),rgba(14,16,22,.91)),url(img/tile-stone.png) 0 0/64px 64px}
+.bg-oak{background:linear-gradient(rgba(22,16,11,.88),rgba(18,13,9,.91)),url(img/tile-planks.png) 0 0/64px 64px}
+.bg-earth{background:linear-gradient(rgba(16,14,12,.88),rgba(14,13,13,.93)),url(img/tile-dirt.png) 0 0/64px 64px}
+section{padding:52px 0;border-top:4px solid #000;position:relative}
+.grass-edge{height:6px;background:repeating-linear-gradient(90deg,#3d7e23 0 16px,#57a633 16px 32px);border-bottom:3px solid #000}
+
+/* Beveled Minecraft Workbench plaques & buttons */
+.plaque{
+  background:var(--surface);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),5px 5px 0 rgba(0,0,0,.48);
+}
+.plaque-oak{
+  background:linear-gradient(rgba(30,20,11,.84),rgba(22,14,8,.9)),url(img/tile-planks.png) 0 0/64px 64px;
+  border:3px solid #000;
+  box-shadow:inset 2px 2px 0 rgba(212,166,106,.35),inset -2px -2px 0 #0b0704,6px 6px 0 rgba(0,0,0,.55);
+}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:9px;
+  padding:11px 20px;font:700 1.05rem/1.15 var(--px);color:#fff;text-decoration:none;
+  text-shadow:2px 2px 0 rgba(0,0,0,.65);background:#484f60;border:3px solid #000;
+  box-shadow:inset 3px 3px 0 #7a8399,inset -3px -4px 0 #262b36,3px 3px 0 rgba(0,0,0,.45);
+  cursor:pointer;white-space:nowrap;
+}
+.btn:hover{background:#5a637a;color:#fff;box-shadow:inset 3px 3px 0 #95a0ba,inset -3px -4px 0 #2f3645,3px 3px 0 rgba(0,0,0,.45)}
+.btn:active{transform:translateY(2px)}
+.btn.go{background:var(--emerald);box-shadow:inset 3px 3px 0 #7fe064,inset -3px -4px 0 #1c4e14,3px 3px 0 rgba(0,0,0,.5)}
+.btn.go:hover{background:var(--emerald-hi);box-shadow:inset 3px 3px 0 #a3f28c,inset -3px -4px 0 #246419,3px 3px 0 rgba(0,0,0,.5)}
+.btn.sm{padding:7px 13px;font-size:.9rem}
+.btn img{width:20px;height:20px;flex:0 0 auto}
+
+/* Top XP progress bar */
+#xp{position:fixed;top:0;left:0;right:0;height:10px;display:flex;align-items:stretch;background:#090b0f;border-bottom:2px solid #000;z-index:80;pointer-events:none}
+#xp .xp-track{flex:1;position:relative;margin:1px 0 1px 2px;background:#1d212b;box-shadow:inset 0 1px 0 #000}
+#xp .xp-track i{display:block;height:100%;width:0;background:linear-gradient(#b8f77f,#6fd03a 48%,#358927);box-shadow:inset 0 -1px 0 #1f5414}
+#xp .xp-track:after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0 11px,rgba(0,0,0,.42) 11px 12px)}
+#xp b{width:64px;text-align:center;font:700 10px/10px var(--px);color:#80ff20;text-shadow:1px 1px 0 #000;white-space:nowrap}
+#xp.up .xp-track i{animation:xpflash .4s steps(2) 3}
+@keyframes xpflash{50%{filter:brightness(2.2)}}
+
+/* Advancement toasts */
+#toasts{position:fixed;top:88px;right:12px;z-index:75;width:min(310px,calc(100vw - 24px));pointer-events:none}
+.toast{display:flex;gap:10px;align-items:center;padding:8px 12px 8px 8px;background:#171a22;border:3px solid #000;box-shadow:inset 2px 2px 0 #3f4659,inset -2px -2px 0 #0a0c10,5px 5px 0 rgba(0,0,0,.55);transform:translateX(calc(100% + 28px));transition:transform .32s steps(6)}
+.toast.in{transform:none}
+.toast .ti{flex:0 0 42px;height:42px;display:flex;align-items:center;justify-content:center;background:#10131a;border:2px solid;border-color:#07080b #3d4458 #3d4458 #07080b}
+.toast .ti img{width:28px;height:28px}
+.toast small{display:block;font:700 .78rem var(--px);color:var(--gold)}
+.toast strong{display:block;font:700 .98rem/1.15 var(--px);color:#fff}
+
+/* Sticky 7-slot Minecraft Hotbar Nav */
+.hotbar-wrap{position:sticky;top:10px;z-index:60;background:rgba(12,14,19,.96);border-bottom:3px solid #000;backdrop-filter:blur(4px)}
+.hotbar{display:flex;gap:5px;max-width:1120px;margin:0 auto;padding:6px 12px;overflow-x:auto;scrollbar-width:none;align-items:stretch}
+.hotbar::-webkit-scrollbar{display:none}
+.hotbar .brand{display:flex;align-items:center;gap:8px;padding:0 10px 0 2px;font:700 1.12rem var(--px);color:#7be04e;text-decoration:none;white-space:nowrap;text-shadow:2px 2px 0 #000}
+.hotbar .brand img{width:28px;height:28px}
+.slot-nav{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  min-width:68px;padding:4px 8px 3px;background:#232835;color:var(--ink);text-decoration:none;
+  font:400 .76rem/1.1 var(--px);border:2px solid;border-color:#444d63 #0c0e13 #0c0e13 #444d63;
+  box-shadow:0 0 0 2px #000;white-space:nowrap;position:relative;flex:0 0 auto;cursor:pointer;margin:0;
+}
+.slot-nav img{width:20px;height:20px;margin-bottom:2px}
+.slot-nav:hover{background:#303749;color:#fff}
+.slot-nav.on{background:#2d3b2d;border-color:#7be04e #193e14 #193e14 #7be04e;color:var(--gold)}
+.slot-nav .n{position:absolute;left:4px;top:2px;font-size:.62rem;color:var(--muted)}
+.hotbar .sp{flex:1;min-width:4px}
+.slot-nav.snd .n{left:auto;right:4px;top:2px;color:var(--gold)}
+.slot-nav.snd[aria-pressed=true]{background:#254922;border-color:#7be04e #132c10 #132c10 #7be04e;color:#fff}
+.slot-nav.get{
+  background:var(--emerald);color:#fff;border-color:#7fe064 #1b4d13 #1b4d13 #7fe064;
+  font-weight:700;text-shadow:1px 1px 0 #000;position:sticky;right:0;z-index:2;
+  box-shadow:0 0 0 2px #000,12px 0 0 #0c0e13,-6px 0 0 #0c0e13;
+}
+.slot-nav.get:hover{background:var(--emerald-hi)}
+.hotbar-wrap .scroll-cue{display:none;position:absolute;right:78px;top:6px;bottom:6px;width:24px;align-items:center;justify-content:flex-end;padding-right:3px;background:linear-gradient(90deg,rgba(12,14,19,0),rgba(12,14,19,.96) 72%);color:var(--gold);font:700 1.05rem/1 var(--px);pointer-events:none;z-index:3}
+@media (max-width:640px){
+  .hotbar .brand span{display:none}
+  .slot-nav{min-width:60px;font-size:.7rem;padding:4px 5px 3px}
+  .hotbar-wrap .scroll-cue{display:flex}
+}
+
+/* Top status ribbon */
+.ribbon{
+  background:#151822;border-bottom:3px solid #000;padding:6px 14px;
+  text-align:center;font:400 .86rem/1.35 var(--px);color:var(--dim);
+}
+.ribbon b{color:var(--emerald-glow)}
+.ribbon span{color:var(--gold)}
+
+/* Hero + Above-the-fold Playable Arena */
+.hero{padding:20px 0 38px;border-top:0}
+.hero-top{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;margin-bottom:18px}
+.hero-brand{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap}
+#hero-sloth{width:64px;height:64px;cursor:pointer;display:block;animation:bob 2.8s steps(5) infinite}
+@keyframes bob{50%{transform:translateY(-5px)}}
+#hero-sloth.dance{animation:slothdance 1.7s ease-in-out 1}
+@keyframes slothdance{0%,100%{transform:none}15%{transform:translateY(-18px) rotate(-10deg)}35%{transform:translateY(-18px) rotate(10deg)}55%{transform:translateX(-8px) rotate(-8deg)}75%{transform:translateX(8px) rotate(8deg)}90%{transform:scale(1.1,.92)}}
+.hero h1{font-size:clamp(2.35rem,6vw,3.9rem);color:var(--emerald-glow);text-shadow:4px 4px 0 #17380d,7px 7px 0 #000;letter-spacing:.03em}
+.hero-sub{max-width:740px;margin:0;color:var(--ink);font-size:clamp(1.02rem,1.9vw,1.18rem);text-shadow:1px 1px 0 #000}
+.hero-sub strong{color:var(--gold)}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:4px}
+@media (max-width:560px){.cta-row .btn{width:100%;max-width:340px}}
+
+/* Compact SmartScreen helper */
+.smart-help{
+  max-width:680px;width:100%;margin:4px auto 0;background:rgba(20,24,33,.92);
+  border:2px solid #353c4f;text-align:left;font-size:.88rem;color:var(--dim);
+}
+.smart-help summary{
+  cursor:pointer;padding:6px 12px;list-style:none;display:flex;align-items:center;gap:8px;
+  font:400 .86rem/1.35 var(--px);color:var(--dim);
+}
+.smart-help summary::-webkit-details-marker{display:none}
+.smart-help summary:before{content:"i";display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;background:#2a3245;color:var(--gold);border:2px solid #000;font:700 .78rem var(--px);flex:0 0 auto}
+.smart-help summary b{color:var(--ink)}
+.smart-help .ans{padding:2px 12px 10px 38px;color:var(--dim);line-height:1.45}
+
+/* Playable 2D Arena Showcase Frame */
+.arena-frame{padding:10px;position:relative;transition:box-shadow .12s}
+.arena-frame.is-focused{
+  box-shadow:inset 2px 2px 0 var(--emerald-glow),inset -2px -2px 0 #1f5414,0 0 0 3px var(--emerald-glow),6px 6px 0 rgba(0,0,0,.6);
+}
+.arena-bar{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;
+  padding:4px 6px 9px;font-family:var(--px);
+}
+.arena-title{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--gold);text-shadow:1px 1px 0 #000}
+.live-dot{width:9px;height:9px;background:var(--emerald-glow);border:2px solid #000;box-shadow:0 0 6px var(--emerald-glow);display:inline-block}
+.arena-right{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.score-pill{
+  display:inline-flex;align-items:center;gap:8px;background:#0c0f15;border:2px solid #000;
+  box-shadow:inset 1px 1px 0 #343b4e;padding:4px 10px;font-size:.85rem;color:var(--dim);
+}
+.score-pill b{color:#fff}
+.score-pill .best-v{color:var(--gold)}
+.combo-pill{
+  background:#5c1420;color:var(--gold);border:2px solid #000;box-shadow:inset 1px 1px 0 #ff758a;
+  padding:4px 8px;font-size:.82rem;font-weight:700;
+}
+.arena-btn{
+  background:#282e3d;color:var(--ink);border:2px solid #000;
+  box-shadow:inset 2px 2px 0 #4a536b,inset -2px -2px 0 #12151c;
+  padding:4px 10px;font:700 .8rem var(--px);cursor:pointer;
+}
+.arena-btn:hover{background:#363e52;color:#fff}
+.arena-btn[aria-pressed=true]{background:var(--emerald);color:#fff;box-shadow:inset 2px 2px 0 #82e368,inset -2px -2px 0 #1a4b12}
+
+.scene-stage{
+  position:relative;background:#0e1624;border:3px solid #000;
+  box-shadow:inset 0 0 0 2px #2c3345;overflow:hidden;display:flex;justify-content:center;
+}
+.scene-stage canvas{display:block;image-rendering:pixelated;cursor:crosshair;touch-action:manipulation;max-width:100%}
+.cap{
+  position:absolute;left:0;top:0;font:700 13px var(--px);white-space:nowrap;pointer-events:none;
+  text-shadow:-2px 0 #000,2px 0 #000,0 -2px #000,0 2px #000,2px 2px 0 #000;will-change:transform;z-index:4;
+}
+.hud-keys{
+  position:absolute;left:8px;top:8px;z-index:6;pointer-events:none;
+  background:rgba(10,13,18,.86);border:2px solid var(--emerald-glow);color:#e2f9db;
+  padding:3px 8px;font:400 .76rem/1.25 var(--px);text-shadow:1px 1px 0 #000;
+}
+.mod-banner{
+  position:absolute;left:50%;top:10px;transform:translate(-50%,-10px);z-index:7;pointer-events:none;
+  background:rgba(15,18,26,.94);color:var(--gold);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 #555f7a,3px 3px 0 rgba(0,0,0,.6);
+  padding:4px 14px;font:700 .9rem/1.2 var(--px);white-space:nowrap;max-width:calc(100% - 16px);
+  overflow:hidden;text-overflow:ellipsis;opacity:0;transition:opacity .15s,transform .15s;
+}
+.mod-banner.show{opacity:1;transform:translate(-50%,0)}
+.mod-banner.tone-fire{border-color:#000;box-shadow:inset 2px 2px 0 #ff8c1a,3px 3px 0 rgba(0,0,0,.6);color:#ffd166}
+.mod-banner.tone-cyan{box-shadow:inset 2px 2px 0 #5ce1e6,3px 3px 0 rgba(0,0,0,.6);color:#a5f3fc}
+.mod-banner.tone-emerald{box-shadow:inset 2px 2px 0 #7be04e,3px 3px 0 rgba(0,0,0,.6);color:#b8ff9d}
+.mod-banner.tone-gold{box-shadow:inset 2px 2px 0 #fcd34d,3px 3px 0 rgba(0,0,0,.6);color:#fff2a6}
+
+/* Minecraft Boss HP Bar */
+.boss-hud{
+  position:absolute;left:50%;bottom:10px;transform:translateX(-50%);z-index:6;pointer-events:none;
+  width:min(320px,calc(100% - 24px));text-align:center;
+}
+.boss-hud span{display:block;font:700 .78rem/1.1 var(--px);color:#ff8a8a;text-shadow:2px 2px 0 #000;margin-bottom:3px;letter-spacing:.06em}
+.boss-track{height:10px;background:#1a090e;border:2px solid #000;box-shadow:0 0 0 1px #521a25;position:relative;overflow:hidden}
+.boss-track i{display:block;height:100%;width:100%;background:linear-gradient(#ff5c77,#c81e3a 55%,#7f1125);transition:width .12s}
+
+/* 8-Slot Live Mod Hotbar */
+.mod-hotbar{
+  display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px;margin-top:10px;
+}
+@media (max-width:860px){.mod-hotbar{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.mod-slot{
+  position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  padding:7px 4px 6px;background:var(--slot-bg);color:var(--ink);
+  border:3px solid #000;box-shadow:inset 2px 2px 0 #353c4e,inset -2px -2px 0 #08090d;
+  cursor:pointer;font-family:var(--px);text-align:center;min-width:0;
+}
+.mod-slot:hover{background:#1b202d;box-shadow:inset 2px 2px 0 #5b6682,inset -2px -2px 0 #0a0c10}
+.mod-slot:active{transform:translateY(1px)}
+.mod-slot.is-active{
+  background:#1f3320;box-shadow:inset 2px 2px 0 var(--emerald-glow),inset -2px -2px 0 #143311;
+}
+.mod-slot .slot-num{position:absolute;left:5px;top:3px;font-size:.66rem;color:var(--muted)}
+.mod-slot .slot-tag{position:absolute;right:4px;top:3px;font-size:.62rem;color:var(--gold);background:rgba(0,0,0,.6);padding:0 3px}
+.mod-slot canvas.slot-ico{width:28px;height:28px;image-rendering:pixelated;display:block;margin-top:4px}
+.mod-slot .slot-lbl{font-size:.76rem;line-height:1.1;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.arena-tip{margin:8px 4px 0;text-align:center;font-size:.84rem;color:var(--muted)}
+.arena-tip b{color:var(--dim)}
+
+/* Section 2: Software Trailer Cinema + 3-Step Workflow */
+.trailer-grid{display:grid;gap:22px;grid-template-columns:minmax(0,1.45fr) minmax(0,1fr);align-items:start}
+@media (max-width:900px){.trailer-grid{grid-template-columns:1fr}}
+.cinema{padding:12px}
+.cinema-screen{position:relative;background:#080a0f;border:3px solid #000;overflow:hidden;cursor:zoom-in}
+.cinema-screen img,.cinema-screen canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.cinema-screen canvas{position:absolute;inset:0;width:100%;height:100%}
+.cinema-bar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-top:10px}
+.chapters{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.chapter-pill{
+  background:#1b1f2b;color:var(--dim);border:2px solid #000;
+  box-shadow:inset 1px 1px 0 #3a4257;padding:4px 9px;font:400 .78rem var(--px);cursor:pointer;
+}
+.chapter-pill:hover{color:#fff;background:#262c3d}
+.chapter-pill[aria-pressed=true]{background:#254922;color:var(--gold);box-shadow:inset 1px 1px 0 #7be04e}
+.chapter-note{margin:8px 2px 0;font-size:.88rem;color:var(--dim)}
+
+.workflow-col{display:flex;flex-direction:column;gap:14px}
+.craft-plaque{padding:12px;display:flex;flex-direction:column;align-items:center;gap:8px}
+.craft-plaque canvas{display:block;width:100%;max-width:336px;height:auto;aspect-ratio:336/132;border:3px solid #000}
+.craft-plaque small{font:400 .8rem var(--px);color:var(--dim)}
+.steps-list{list-style:none;margin:0;padding:0;display:grid;gap:10px;counter-reset:st}
+.steps-list li{
+  counter-increment:st;position:relative;padding:12px 14px 12px 52px;
+  background:var(--surface);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),4px 4px 0 rgba(0,0,0,.4);
+}
+.steps-list li:before{
+  content:counter(st);position:absolute;left:12px;top:12px;width:28px;height:28px;
+  display:flex;align-items:center;justify-content:center;background:var(--gold);color:#1d1400;
+  border:2px solid #000;font:700 1rem var(--px);box-shadow:inset 2px 2px 0 #fff5bd;
+}
+.steps-list b{display:block;font:700 1.02rem var(--px);color:var(--ink);margin-bottom:2px}
+.steps-list span{display:block;font-size:.9rem;color:var(--dim);line-height:1.45}
+
+/* Section 3: Interactive 6-Tab Studio Switcher */
+.studio-tabs{
+  display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-bottom:-3px;position:relative;z-index:2;
+}
+@media (max-width:860px){.studio-tabs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){.studio-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.studio-tab{
+  display:flex;align-items:center;justify-content:center;gap:7px;padding:10px 8px;
+  background:#1c202b;color:var(--dim);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 #353d52,inset -2px -2px 0 #0c0e13;
+  font:700 .86rem/1.15 var(--px);cursor:pointer;text-align:left;min-width:0;
+}
+.studio-tab img{width:20px;height:20px;flex:0 0 auto}
+.studio-tab span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.studio-tab:hover{background:#252b3a;color:#fff}
+.studio-tab[aria-selected=true]{
+  background:var(--surface-2);color:var(--gold);border-bottom-color:var(--surface-2);
+  box-shadow:inset 2px 2px 0 var(--emerald-glow),inset -2px 0 0 #163a11;
+}
+.studio-stage{
+  background:var(--surface-2);border:3px solid #000;padding:16px;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),6px 6px 0 rgba(0,0,0,.5);
+  display:grid;gap:20px;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);align-items:center;
+}
+@media (max-width:860px){.studio-stage{grid-template-columns:1fr}}
+.stage-shot-wrap{
+  position:relative;background:#0a0c10;border:3px solid #000;cursor:zoom-in;overflow:hidden;
+}
+.stage-shot-wrap img{display:block;width:100%;height:auto;aspect-ratio:16/10;object-fit:cover}
+.zoom-pill{
+  position:absolute;right:8px;bottom:8px;background:rgba(10,12,18,.88);color:var(--gold);
+  border:2px solid #000;padding:3px 8px;font:700 .75rem var(--px);pointer-events:none;
+}
+.studio-info{display:flex;flex-direction:column;gap:12px}
+.badge-pill{
+  display:inline-flex;align-self:flex-start;background:#1f3d1c;color:var(--emerald-glow);
+  border:2px solid #000;box-shadow:inset 1px 1px 0 #58b847;padding:3px 9px;font:700 .8rem var(--px);
+}
+.studio-info h3{font-size:1.4rem;color:var(--gold);text-shadow:2px 2px 0 #000}
+.studio-bullets{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.studio-bullets li{
+  position:relative;padding:9px 12px 9px 34px;background:#151821;border:2px solid #000;
+  box-shadow:inset 1px 1px 0 #2d3446;font-size:.94rem;color:var(--ink);line-height:1.42;
+}
+.studio-bullets li:before{
+  content:"";position:absolute;left:10px;top:12px;width:15px;height:15px;
+  background:url(img/ico-check.png) 0 0/15px 15px no-repeat;
+}
+
+/* Section 4: In-Game Proof + 4-Side Creature Turntable */
+.turnwrap{margin-bottom:28px}
+.stage{
+  background:radial-gradient(circle at 50% 42%,#282e3d,#13161e 75%);
+  border:3px solid #000;box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),6px 6px 0 rgba(0,0,0,.55);
+  padding:14px;text-align:center;
+}
+.stage img.pic{
+  display:block;width:100%;max-width:740px;height:auto;aspect-ratio:12/7;margin:6px auto 0;
+  cursor:grab;touch-action:pan-y;image-rendering:auto;background:#4d78ba;border:3px solid #000;
+}
+.stage img.pic:active{cursor:grabbing}
+.stage .nm{font:700 1.05rem var(--px);color:var(--gold);margin:8px 0;text-shadow:2px 2px 0 #000;min-height:1.4em}
+.stage .note{margin:8px 0 0;font-size:.85rem;color:var(--muted)}
+.tabs{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;padding:4px 0 6px}
+.tab{
+  font:700 .86rem var(--px);color:var(--dim);background:#232836;
+  border:2px solid #000;box-shadow:inset 2px 2px 0 #414a61,inset -2px -2px 0 #10131b;
+  padding:5px 11px;cursor:pointer;
+}
+.tab:hover{background:#30374a;color:#fff}
+.tab[aria-pressed=true]{background:var(--emerald);color:#fff;box-shadow:inset 2px 2px 0 #82e368,inset -2px -2px 0 #194a11;text-shadow:1px 1px 0 #000}
+
+.mosaic{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.mosaic li.wide{grid-column:1/-1}
+.mosaic li.wide .m-img{aspect-ratio:auto;background:#78a7f0}
+.mosaic li.wide img{width:100%;height:auto;object-fit:contain}
+@media (max-width:760px){.mosaic{grid-template-columns:1fr}}
+.mosaic figure{
+  margin:0;background:var(--surface);border:3px solid #000;cursor:zoom-in;overflow:hidden;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),5px 5px 0 rgba(0,0,0,.48);
+  display:flex;flex-direction:column;height:100%;
+}
+.mosaic .m-img{background:#0b0d12;border-bottom:3px solid #000;overflow:hidden;aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
+.mosaic img{display:block;width:100%;height:100%;object-fit:cover}
+.mosaic img.contain-shot{object-fit:contain;background:#0e131d}
+.mosaic figcaption{padding:10px 12px;font:400 .9rem/1.35 var(--px);color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:8px}
+.mosaic figcaption span{color:var(--gold);font-size:.75rem;flex:0 0 auto}
+
+/* Section 5: 3D Spinner, Sounds & Collapsible Art Vault */
+.engine{display:grid;gap:24px;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center}
+@media (max-width:840px){.engine{grid-template-columns:1fr}}
+.stage canvas.view{display:block;width:100%;max-width:300px;height:auto;aspect-ratio:1;margin:0 auto;cursor:grab;touch-action:pan-y}
+.stage canvas.view:active{cursor:grabbing}
+.picks{display:flex;gap:7px;justify-content:center;flex-wrap:wrap;padding:4px 0 8px;min-height:56px}
+.picks button.slot{
+  cursor:pointer;padding:0;width:50px;height:50px;display:flex;align-items:center;justify-content:center;
+  background:var(--slot-bg);border:2px solid;border-color:#07080b #3f475c #3f475c #07080b;box-shadow:0 0 0 2px #000;
+}
+.picks button.slot[hidden]{display:none}
+.picks button.slot[aria-pressed=true]{background:#1e361c;border-color:var(--emerald-glow);box-shadow:0 0 0 2px #000,inset 0 0 0 1px var(--emerald-glow)}
+.picks button.slot canvas{width:34px;height:34px;image-rendering:pixelated;pointer-events:none}
+.sh{color:var(--gold);font-size:1.25rem;text-shadow:2px 2px 0 #000;margin:0 0 8px}
+.engine p{margin:0 0 12px;color:var(--dim)}
+.engine p strong{color:var(--ink)}
+.sounds{display:flex;flex-wrap:wrap;gap:8px}
+.sounds .btn.on{background:var(--emerald)}
+
+/* Collapsible Art Vault */
+.art-vault{
+  margin-top:26px;background:var(--surface);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),5px 5px 0 rgba(0,0,0,.48);
+}
+.art-vault summary{
+  cursor:pointer;padding:13px 16px;font:700 1.02rem var(--px);color:var(--gold);list-style:none;
+  display:flex;align-items:center;gap:10px;
+}
+.art-vault summary::-webkit-details-marker{display:none}
+.art-vault summary:before{content:"+";display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;background:var(--emerald);color:#fff;border:2px solid #000;font:700 1rem var(--px);flex:0 0 auto}
+.art-vault[open] summary:before{content:"-";background:#8a2c38}
+.vault-body{padding:4px 16px 18px;display:grid;gap:18px}
+.vault-body figure{margin:0}
+.vault-scroll{overflow-x:auto;border:3px solid #000;background:#0b0d12;padding:6px}
+.vault-scroll img{display:block;min-width:600px;width:100%;height:auto;image-rendering:pixelated}
+.vault-body figcaption{margin-top:8px;font-size:.88rem;color:var(--dim);text-align:center}
+
+/* Section 6: Trust, 2x3 Matrix, Versions, Chest, Support & 7 FAQs */
+.cap-grid{display:grid;gap:14px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0 0 28px;padding:0}
+@media (max-width:900px){.cap-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:580px){.cap-grid{grid-template-columns:1fr}}
+.cap-card{
+  display:flex;gap:12px;align-items:flex-start;padding:14px;background:var(--surface);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),4px 4px 0 rgba(0,0,0,.45);
+}
+.cap-card .ic{
+  flex:0 0 48px;height:48px;display:flex;align-items:center;justify-content:center;
+  background:var(--slot-bg);border:2px solid;border-color:#07080b #3d455b #3d455b #07080b;
+}
+.cap-card .ic img{width:30px;height:30px}
+.cap-card h3{font-size:1rem;color:var(--gold);margin-bottom:4px}
+.cap-card p{margin:0;font-size:.9rem;color:var(--dim);line-height:1.45}
+
+.trust-split{display:grid;gap:20px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);margin-bottom:24px;align-items:stretch}
+@media (max-width:860px){.trust-split{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;background:var(--surface);color:var(--ink);border:3px solid #000}
+caption{text-align:left;padding:0 0 8px;font:700 .95rem var(--px);color:var(--gold)}
+th,td{border:2px solid #000;padding:8px 11px;text-align:left;font-size:.9rem}
+th{background:#232836;font-family:var(--px);color:var(--ink)}
+td.flag{color:var(--emerald-glow);font-weight:700}
+td.yes{color:#c7f9cc}
+td.no{color:#67728a}
+
+.privacy-box{padding:16px;display:flex;flex-direction:column;justify-content:space-between;gap:12px}
+.privacy-box h3{color:var(--gold);font-size:1.12rem}
+.privacy-box p{margin:0;font-size:.92rem;color:var(--dim);line-height:1.48}
+.privacy-box ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:.9rem;color:var(--ink)}
+.doclinks{display:flex;flex-wrap:wrap;gap:6px 14px;font:400 .88rem var(--px)}
+
+/* Release Chest + Support row */
+.chest-row{display:grid;gap:20px;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);margin-bottom:32px;align-items:stretch}
+@media (max-width:820px){.chest-row{grid-template-columns:1fr}}
+.chest{
+  position:relative;display:flex;align-items:center;gap:16px;padding:18px 22px;color:#fff3d6;
+  background:linear-gradient(rgba(30,19,9,.72),rgba(20,12,6,.82)),url(img/tile-planks.png) 0 0/64px 64px;
+  border:3px solid #000;box-shadow:inset 3px 3px 0 rgba(255,216,148,.3),inset -3px -3px 0 #0b0704,5px 5px 0 rgba(0,0,0,.5);
+}
+.chest:before,.chest:after{content:"";position:absolute;top:-3px;bottom:-3px;width:9px;background:#687084;border:2px solid #000;border-top:0;border-bottom:0;box-shadow:inset 2px 0 0 #9aa4ba,inset -2px 0 0 #393e4b}
+.chest:before{left:22px}.chest:after{right:22px}
+.chest .lock{position:absolute;left:50%;top:-9px;width:16px;height:18px;margin-left:-8px;background:var(--gold);border:2px solid #000;box-shadow:inset 2px 2px 0 #fff7c2}
+.chest > img{width:44px;height:44px;margin-left:24px;flex:0 0 auto}
+.chest .cb{display:flex;flex-direction:column;gap:5px;min-width:0;margin-right:24px}
+.chest .ct{font:700 1.05rem var(--px);color:var(--gold);text-shadow:1px 1px 0 #000}
+.chest .cv{font:700 .95rem var(--px);color:#fff}
+.chest .c-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;align-items:center}
+@media (max-width:480px){.chest{flex-direction:column;text-align:center}.chest > img{margin:0}.chest .cb{margin:0;align-items:center}.chest:before{left:10px}.chest:after{right:10px}}
+
+.support-card{padding:16px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+.support-card h3{color:var(--gold);margin-bottom:6px}
+.support-card p{margin:0 0 10px;font-size:.9rem;color:var(--dim)}
+.support-card .qr{flex:0 0 auto;text-align:center}
+.support-card .qr img{display:block;width:108px;height:108px;image-rendering:auto;border:3px solid #000;background:#fff}
+.support-card .qr span{display:block;margin-top:4px;font-size:.76rem;color:var(--muted)}
+@media (max-width:480px){.support-card{flex-direction:column;text-align:center}}
+
+/* 7 Tight FAQs */
+.faq-head{display:flex;align-items:center;gap:8px;margin-bottom:14px}
+canvas.mini{width:34px;height:34px;image-rendering:pixelated}
+.faq-list{display:grid;gap:10px}
+.faq-item{
+  background:var(--surface);border:3px solid #000;
+  box-shadow:inset 2px 2px 0 var(--bevel-hi),inset -2px -2px 0 var(--bevel-lo),4px 4px 0 rgba(0,0,0,.42);
+}
+.faq-item summary{
+  cursor:pointer;padding:12px 14px;font:700 1rem var(--px);color:var(--ink);list-style:none;
+  display:flex;align-items:center;gap:10px;
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary:before{
+  content:"+";display:inline-flex;align-items:center;justify-content:center;flex:0 0 22px;height:22px;
+  background:var(--emerald);color:#fff;border:2px solid #000;font:700 .9rem var(--px);
+}
+.faq-item[open] summary{color:var(--gold)}
+.faq-item[open] summary:before{content:"-";background:#8a2c38}
+.faq-item .ans{padding:2px 16px 14px 46px;color:var(--dim);font-size:.93rem;line-height:1.5}
+.faq-item .ans p{margin:0 0 6px}
+.faq-item .ans p:last-child{margin-bottom:0}
+
+/* Fullscreen Pixel Lightbox */
+.lightbox{
+  position:fixed;inset:0;z-index:200;background:rgba(6,8,12,.92);
+  display:flex;align-items:center;justify-content:center;padding:20px;
+}
+.lightbox[hidden]{display:none}
+.lb-panel{
+  max-width:min(1160px,96vw);max-height:92vh;display:flex;flex-direction:column;
+  background:#141720;border:4px solid #000;box-shadow:inset 2px 2px 0 #485068,0 16px 48px rgba(0,0,0,.85);
+}
+.lb-top{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:8px 12px;background:#1c202d;border-bottom:3px solid #000;
+}
+.lb-cap{font:700 .92rem/1.3 var(--px);color:var(--gold)}
+.lb-close{
+  background:#8a2c38;color:#fff;border:2px solid #000;box-shadow:inset 2px 2px 0 #c96270;
+  padding:4px 12px;font:700 .88rem var(--px);cursor:pointer;flex:0 0 auto;
+}
+.lb-close:hover{background:#a83645}
+.lb-body{padding:10px;overflow:auto;display:flex;align-items:center;justify-content:center;background:#0a0c10}
+.lb-body img{display:block;max-width:100%;max-height:calc(92vh - 76px);width:auto;height:auto;image-rendering:auto}
+
+/* Footer */
+footer{background:#090b0f;border-top:4px solid #000;padding:34px 0 44px;color:var(--dim);font-size:.9rem;text-align:center}
+.crawl{position:relative;height:48px;overflow:hidden;margin:-24px 0 10px}
+.crawl i{position:absolute;left:-70px;bottom:0;width:64px;height:48px;background:url(img/sloth-crawl.png) 0 0/256px 48px;image-rendering:pixelated;animation:sstep .9s steps(4) infinite,swalk 40s linear infinite}
+@keyframes sstep{to{background-position:-256px 0}}
+@keyframes swalk{to{left:100%}}
+footer .f-sloth{width:42px;height:42px;margin:0 auto 6px;display:block}
+footer .links{display:flex;gap:6px 18px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+footer p{margin:.4em auto;max-width:740px}
+footer .legal{font-size:.82rem;color:var(--muted)}
+.pp{position:fixed;z-index:90;width:8px;height:8px;pointer-events:none}
+
+@media (prefers-reduced-motion:reduce){
+  #hero-sloth,#hero-sloth.dance,.crawl i,#xp.up .xp-track i{animation:none}
+  .crawl i{left:calc(50% - 32px)}
+  .toast{transform:none;opacity:0;transition:opacity .01s}
+  .toast.in{opacity:1}
+}
+</style>
+</head>
+<body>
+<div id="xp" aria-hidden="true"><span class="xp-track"><i id="xp-fill"></i></span><b id="xp-lab">Lv 0</b></div>
+<div id="toasts" role="status" aria-live="polite" aria-atomic="true"></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<div class="hotbar-wrap">
+  <nav class="hotbar" aria-label="Main navigation">
+    <a class="brand" href="#play"><img src="img/sloth.png" width="28" height="28" alt=""><span>SlothMod</span></a>
+    <a class="slot-nav on" href="#play" aria-current="true"><i class="n">1</i><img src="img/ico-sword.png" width="20" height="20" alt="">Play</a>
+    <a class="slot-nav" href="#trailer"><i class="n">2</i><img src="img/ico-gem.png" width="20" height="20" alt="">Trailer</a>
+    <a class="slot-nav" href="#studios"><i class="n">3</i><img src="img/ico-castle.png" width="20" height="20" alt="">Studios</a>
+    <a class="slot-nav" href="#ingame"><i class="n">4</i><img src="img/ico-mob.png" width="20" height="20" alt="">In-Game</a>
+    <a class="slot-nav" href="#showcase"><i class="n">5</i><img src="img/ico-palette.png" width="20" height="20" alt="">3D &amp; Sound</a>
+    <a class="slot-nav" href="#trust"><i class="n">6</i><img src="img/ico-shield.png" width="20" height="20" alt="">FAQ</a>
+    <span class="sp"></span>
+    <button class="slot-nav snd" id="snd" type="button" aria-pressed="false" aria-label="Toggle sound effects"><i class="n" id="snd-n">off</i><img src="img/ico-note.png" width="20" height="20" alt="">Sound</button>
+    <a class="slot-nav get" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe" rel="noopener"><img src="img/ico-chest.png" width="20" height="20" alt="">Download</a>
+  </nav>
+  <span class="scroll-cue" aria-hidden="true">&rsaquo;</span>
+</div>
+
+<div class="ribbon">
+  <b>SlothMod v1.0.0</b> &middot; Free for Windows 10 &amp; 11 &middot; <span>$0 Offline Visual Studios + Optional AI</span> &middot; Fabric &middot; NeoForge &middot; Forge
+</div>
+
+<main id="main">
+<!-- ==================== 1. HERO + PLAYABLE 2D SANDBOX ==================== -->
+<header class="hero bg-earth" id="play">
+  <div class="wrap">
+    <div class="hero-top">
+      <div class="hero-brand">
+        <img id="hero-sloth" class="sloth" src="img/sloth.png" width="64" height="64" alt="SlothMod pixel mascot" title="Click the sloth for a surprise!">
+        <h1>SLOTHMOD</h1>
+      </div>
+      <p class="hero-sub">Turn plain English — or <strong>six $0 visual studios</strong> — into real Java Edition Minecraft mods.</p>
+      <div class="cta-row">
+        <a class="btn go" id="dl" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe" rel="noopener"><img src="img/ico-chest.png" width="20" height="20" alt="">Download for Windows (Free .exe)</a>
+        <a class="btn" href="#trailer"><img src="img/ico-gem.png" width="20" height="20" alt="">Watch Software Trailer</a>
+      </div>
+      <details class="smart-help" id="winwarning">
+        <summary><span>Windows shows a blue "Protected your PC" screen? Click <b>More info &rarr; Run anyway</b> (why?)</span></summary>
+        <div class="ans">
+          SlothMod is free and not paid-signed yet, so Windows SmartScreen can show a blue notice on first install. Only run the installer from <strong>slothmod.com</strong> or <a href="https://github.com/DeusesPR/SlothMod/releases/latest" target="_blank" rel="noopener">GitHub Releases</a>. Read <a href="https://github.com/DeusesPR/SlothMod/blob/main/PRIVACY.md" target="_blank" rel="noopener">Privacy</a> &middot; <a href="https://github.com/DeusesPR/SlothMod/blob/main/SECURITY.md" target="_blank" rel="noopener">Security</a>.
+        </div>
+      </details>
+    </div>
+
+    <div class="arena-frame plaque-oak" id="arena-frame">
+      <div class="arena-bar">
+        <div class="arena-title"><i class="live-dot" aria-hidden="true"></i> LIVE SANDBOX &middot; MOD THE GAME IN REAL TIME</div>
+        <div class="arena-right">
+          <div class="score-pill" aria-live="off">SCORE <b id="hud-score">000,000</b> &middot; BEST <b class="best-v" id="hud-best">000,000</b></div>
+          <span class="combo-pill" id="hud-combo" hidden>COMBO x2!</span>
+          <button class="arena-btn" id="stage-focus-btn" type="button" aria-pressed="false">Play w/ Keys</button>
+          <button class="arena-btn" id="scene-pause" type="button" aria-pressed="false">Pause</button>
+        </div>
+      </div>
+
+      <div class="scene-stage" id="scene-box">
+        <canvas id="scene" width="360" height="124" role="img" aria-label="Playable 2D pixel-art sandbox. Click enemies to strike, click the crafting sloth or anvil for loot, or press slots 1 through 8 to live-mod weapons, watchtowers, boss dragons, sloth allies, weather, moon gravity and chaos waves."></canvas>
+        <div class="hud-keys" id="hud-keys" hidden>WASD / Arrows Move &middot; Space Jump &middot; Click / F Attack &middot; 1-8 Mod &middot; Esc Release</div>
+        <div class="mod-banner" id="mod-banner" aria-live="polite"></div>
+        <div class="boss-hud" id="boss-hud" hidden>
+          <span>EMBER DRAGON</span>
+          <div class="boss-track"><i id="boss-fill"></i></div>
+        </div>
+      </div>
+
+      <div class="mod-hotbar" id="mod-hotbar" role="toolbar" aria-label="8-Slot Live Mod Hotbar">
+        <button class="mod-slot is-active" type="button" data-mod="1" aria-pressed="true" title="Fireblade: wide flame cleave + burning embers">
+          <span class="slot-num">1</span><span class="slot-tag">Fire</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Fireblade</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="2" aria-pressed="false" title="Storm Staff: chain lightning across 3 targets">
+          <span class="slot-num">2</span><span class="slot-tag">Arc</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Storm Staff</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="3" aria-pressed="false" title="Frost Bow: freeze mobs in pixel ice blocks">
+          <span class="slot-num">3</span><span class="slot-tag">Ice</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Frost Bow</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="4" aria-pressed="false" title="Colony Tower: build & upgrade Lv 1 -> Lv 3 watchtower">
+          <span class="slot-num">4</span><span class="slot-tag">Tower</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Colony Tower</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="5" aria-pressed="false" title="Boss Dragon: summon the swooping Ember Dragon">
+          <span class="slot-num">5</span><span class="slot-tag">Boss</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Boss Dragon</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="6" aria-pressed="false" title="Sloth Ally: summon armored Brain Studio companion">
+          <span class="slot-num">6</span><span class="slot-tag">Ally</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Sloth Ally</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="7" aria-pressed="false" title="World Mood: cycle Day, Sunset, Storm & Low-Gravity Moon">
+          <span class="slot-num">7</span><span class="slot-tag">Day</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">World Mood</span>
+        </button>
+        <button class="mod-slot" type="button" data-mod="8" aria-pressed="false" title="Chaos Wave: spin a live game mutator">
+          <span class="slot-num">8</span><span class="slot-tag">Chaos</span>
+          <canvas class="slot-ico" width="16" height="16" aria-hidden="true"></canvas>
+          <span class="slot-lbl">Chaos Wave</span>
+        </button>
+      </div>
+      <p class="arena-tip"><b>Click mobs or the Dragon</b> to strike &middot; <b>Click the Sloth / Anvil</b> for a forge burst &middot; <b>Click slots 1&ndash;8</b> to mod the game live.</p>
+    </div>
+  </div>
+</header>
+<div class="grass-edge" aria-hidden="true"></div>
+
+<!-- ==================== 2. SOFTWARE TRAILER + 3-STEP WORKFLOW ==================== -->
+<section id="trailer" class="bg-deepslate">
+  <div class="wrap">
+    <h2>Watch SlothMod Build a Mod</h2>
+    <p class="lede">Start from one sentence or open a visual studio offline. Every texture, 3D model, sound, recipe and rule stays editable by hand before you play.</p>
+
+    <div class="trailer-grid">
+      <div class="cinema plaque-oak">
+        <div class="cinema-screen" data-lightbox data-caption="SlothMod 1.0 Software Trailer — six $0 visual studios, 60 FPS 3D voxel world sculpting, 3D architecture, NPC minds, colonies, 3D weapon sculpting, particle FX, visual Blueprints and live Minecraft 26.3 gameplay" tabindex="0" role="button" aria-label="Open trailer fullscreen">
+          <img id="trailer-media" class="shot" data-shot="software-trailer" src="img/v10/slothmod-trailer.webp" width="1280" height="720" loading="lazy" decoding="async" alt="SlothMod 1.0 software trailer showcasing the launcher, 60 FPS 3D World Sculptor, Build Studio castles, Whole-Game &amp; Theme Studios, Brain &amp; Colony Studios, 3D Sculpt &amp; FX, visual Blueprints and custom mods in Minecraft 26.3.">
+          <canvas id="trailer-freeze" hidden aria-hidden="true"></canvas>
+          <span class="zoom-pill">Click to Zoom</span>
+        </div>
+        <div class="cinema-bar">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="arena-btn" id="trailer-pause" type="button" aria-pressed="false">Pause Frame</button>
+            <button class="arena-btn" id="trailer-replay" type="button">Replay Trailer</button>
+          </div>
+          <span style="font:400 .8rem var(--px);color:var(--muted)">Recorded inside SlothMod 1.0 + Minecraft 26.3</span>
+        </div>
+        <div class="chapters" role="group" aria-label="Trailer scenes">
+          <button class="chapter-pill" type="button" aria-pressed="true" data-note="Launch straight into six $0 offline visual studios or describe any mod idea in plain English.">1. Launcher &amp; $0 Studios</button>
+          <button class="chapter-pill" type="button" aria-pressed="false" data-note="Fly over 1:1 stepped-voxel worlds, sculpt mountains &amp; forests at 60 FPS, and move buildings in .mca saves.">2. 3D World Sculptor</button>
+          <button class="chapter-pill" type="button" aria-pressed="false" data-note="Compose castles, Gothic &amp; Solarpunk facades, sketches and 16 furnished room types in 3D.">3. Build Studio</button>
+          <button class="chapter-pill" type="button" aria-pressed="false" data-note="Remix 8 whole-game overhauls, 12 NPC starter minds with 24h simulation, living Colonies and mod-wide Themes.">4. Game, Brain &amp; Colonies</button>
+          <button class="chapter-pill" type="button" aria-pressed="false" data-note="Sculpt 3D weapons box-by-box, design 60 FPS particle FX, wire visual Blueprints and play live in Minecraft 26.3.">5. 3D Sculpt, FX &amp; Play</button>
+        </div>
+        <p class="chapter-note" id="trailer-chapter-note">Launch straight into six $0 offline visual studios or describe any mod idea in plain English.</p>
+      </div>
+
+      <div class="workflow-col">
+        <div class="craft-plaque plaque">
+          <canvas id="craft" width="336" height="132" role="img" aria-label="Animated crafting grid assembling a Ruby Sword, Golden Blade and Glow Lamp from items drawn by SlothMod."></canvas>
+          <small>Real items crafted inside SlothMod's pixel art studio</small>
+        </div>
+
+        <ol class="steps-list">
+          <li><b>Describe or Open a $0 Studio</b><span>Type your idea in plain English, or jump straight into six offline visual studios with zero API key.</span></li>
+          <li><b>Sculpt, Paint &amp; Wire Visually</b><span>Pick from 3 art variants, sculpt 3D boxes, paint textures, and edit rules, brains or worlds by hand.</span></li>
+          <li><b>One-Click Play in Minecraft</b><span>SlothMod builds your mod, repairs errors, and launches Minecraft. Keep, undo, or share your <code>.jar</code>.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 3. INTERACTIVE 6-TAB STUDIO SWITCHER ==================== -->
+<section id="studios" class="bg-oak">
+  <div class="wrap">
+    <h2>Six Visual Studios Built In</h2>
+    <p class="lede">Every studio runs <strong>100% offline at $0 AI cost</strong> — and pairs seamlessly with AI whenever you want a head start. Click any tab or zoom any screenshot.</p>
+
+    <div class="studio-tabs" role="tablist" aria-label="SlothMod visual studios">
+      <button class="studio-tab" type="button" role="tab" id="tab-world" aria-selected="true" aria-controls="studio-panel" tabindex="0"
+        data-studio="world" data-shot="world-sculptor" data-src="img/v10/world-studio-3d-sculptor.png"
+        data-badge="$0 Offline · 60 FPS 3D"
+        data-title="World Sculptor"
+        data-alt="World Studio 3D Stepped-Voxel Explorer showing terraced mountains, coastlines, biome inspector and live 3D Sculpt, Paint, Flora, Move and Box Select tools."
+        data-bullets="Fly over stepped 3D voxel worlds at 1:1 block zoom with seafloor depth and shadows.||Sculpt mountains, lakes, 8 surface types and trees live across 3D &amp; 2D with full Undo/Redo.||Open .mca Minecraft saves to drag-move, rotate 90°, copy, bulldoze or extract buildings.">
+        <img src="img/ico-castle.png" width="20" height="20" alt=""><span>World Sculptor</span>
+      </button>
+
+      <button class="studio-tab" type="button" role="tab" id="tab-build" aria-selected="false" aria-controls="studio-panel" tabindex="-1"
+        data-studio="build" data-shot="build-studio" data-src="img/v10/build-studio-architecture.png"
+        data-badge="$0 + Optional AI"
+        data-title="Build Studio"
+        data-alt="Build Studio 3D architecture composer showing Emerald Cliffside Citadel with room furnishing, facade styles, hillside site controls and layer slicer."
+        data-bullets="Compose castles, ships, cottages and cliffside citadels from English, a sketch, a photo or .schem/.litematic files.||Dress walls in 3D Gothic or Solarpunk facades and auto-furnish 16 room types in one click.||Place 512+-block mega-structures or craft in-game Blueprint scrolls with ghost preview &amp; undo.">
+        <img src="img/ico-block.png" width="20" height="20" alt=""><span>Build Studio</span>
+      </button>
+
+      <button class="studio-tab" type="button" role="tab" id="tab-game" aria-selected="false" aria-controls="studio-panel" tabindex="-1"
+        data-studio="game" data-shot="whole-game-studio" data-src="img/v10/game-and-theme-studio.png"
+        data-badge="$0 Offline Overhauls"
+        data-title="Whole-Game Studio"
+        data-alt="Game Studio Whole-Game Composer showing 8 zero-AI overhaul blueprints, world atlas, pillar tabs and look/theme palettes."
+        data-bullets="Remix 8 instant $0 total-conversion game blueprints or compose your own survival overhaul.||Combine living world chronicles, Nemesis rival warlords, seasons and dynamic town markets.||Direct friends live with the Game Master Scepter, Fate Die and multi-lane Wave Defense.">
+        <img src="img/ico-sword.png" width="20" height="20" alt=""><span>Whole-Game</span>
+      </button>
+
+      <button class="studio-tab" type="button" role="tab" id="tab-brain" aria-selected="false" aria-controls="studio-panel" tabindex="-1"
+        data-studio="brain" data-shot="brain-colonies" data-src="img/v10/colony-and-brain-studio.png"
+        data-badge="$0 + Optional Live AI"
+        data-title="Brain &amp; Colonies"
+        data-alt="Brain Studio showing 12 pixel-art starter mind portraits, Priority Deck rules, unclamped personality sliders and live 24-hour Calm vs Storm and Raid simulator."
+        data-bullets="Shape NPC priorities, unclamped personalities, memories and patrol routes across 12 starter minds.||Preview how NPCs react instantly in the 24-hour Calm Day vs. Storm &amp; Raid simulator.||Found self-building Colonies with Lv 1–3 builders, colonist traits/moods, zones &amp; Storyteller events.">
+        <img src="img/ico-mob.png" width="20" height="20" alt=""><span>Brain &amp; Colonies</span>
+      </button>
+
+      <button class="studio-tab" type="button" role="tab" id="tab-sculpt" aria-selected="false" aria-controls="studio-panel" tabindex="-1"
+        data-studio="sculpt" data-shot="sculpt-paint-fx" data-src="img/studio/sculpt-weapon.png"
+        data-badge="$0 Offline 3D + FX"
+        data-title="3D Sculpt, Paint &amp; FX"
+        data-alt="3D Sculpt Studio showing Relic Blade with RGB move and resize gizmo arrows, Mirror X, snap controls, materials and 3D Paint switcher."
+        data-bullets="Sculpt 3D weapons, props and creatures box-by-box with RGB gizmos, mirroring and 1/4 px snap.||Paint straight onto 3D surfaces with smart material brushes synced live to Minecraft (F3+T).||Animate 0–200-tick Keyframe Timelines, tune mod palettes in Theme Studio &amp; build particle FX.">
+        <img src="img/ico-palette.png" width="20" height="20" alt=""><span>3D Sculpt &amp; FX</span>
+      </button>
+
+      <button class="studio-tab" type="button" role="tab" id="tab-ai" aria-selected="false" aria-controls="studio-panel" tabindex="-1"
+        data-studio="ai" data-shot="ai-blueprints" data-src="img/v10/workshop-blueprints.png"
+        data-badge="AI + Visual + Code"
+        data-title="AI Chat &amp; Blueprints"
+        data-alt="SlothMod Workshop showing visual Blueprint event nodes, Studio tabs, project file tree and AI Builder chat panel with Build and Launch Minecraft controls."
+        data-bullets="Plan mods in plain English with approve-first plans, 3-variant Art Picker and automatic build repair.||Wire visual Blueprint rules, 48-node NPC dialogue, camera cutscenes, quests and slash commands.||Jump into the built-in Java editor anytime, reopen SlothMod .jar mods or browse Modrinth.">
+        <img src="img/ico-book.png" width="20" height="20" alt=""><span>AI &amp; Blueprints</span>
+      </button>
+    </div>
+
+    <div class="studio-stage" id="studio-panel" role="tabpanel" aria-labelledby="tab-world">
+      <div class="stage-shot-wrap" data-lightbox tabindex="0" role="button" aria-label="Zoom studio screenshot">
+        <img id="studio-stage-img" class="shot" data-shot="world-sculptor" src="img/v10/world-studio-3d-sculptor.png" width="1440" height="900" loading="lazy" decoding="async" alt="World Studio 3D Stepped-Voxel Explorer showing terraced mountains, coastlines, biome inspector and live 3D Sculpt, Paint, Flora, Move and Box Select tools." data-caption="World Sculptor — 60 FPS 3D stepped-voxel terrain &amp; .mca save editor">
+        <span class="zoom-pill" id="studio-stage-caption">World Sculptor &middot; Click to Zoom</span>
+      </div>
+      <div class="studio-info">
+        <span class="badge-pill" id="studio-stage-badge">$0 Offline &middot; 60 FPS 3D</span>
+        <h3 id="studio-stage-title">World Sculptor</h3>
+        <ul class="studio-bullets" id="studio-stage-bullets">
+          <li>Fly over stepped 3D voxel worlds at 1:1 block zoom with seafloor depth and shadows.</li>
+          <li>Sculpt mountains, lakes, 8 surface types and trees live across 3D &amp; 2D with full Undo/Redo.</li>
+          <li>Open .mca Minecraft saves to drag-move, rotate 90°, copy, bulldoze or extract buildings.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== 4. REAL IN-GAME PROOF & 4-SIDE TURNTABLE ==================== -->
+<section id="ingame" class="bg-deepslate">
+  <div class="wrap">
+    <h2>Real Mods, Played in Minecraft</h2>
+    <p class="lede">Every picture below is a real in-game screenshot from mods built with SlothMod — rideable dragons, articulated wings, fairies, and custom Blueprint rules.</p>
+
+    <div class="turnwrap">
+      <div id="turn" class="stage">
+        <div class="tabs" role="group" aria-label="Pick a creature">
+          <button class="tab" type="button" data-who="ember" data-label="Ember dragon" aria-pressed="true">Ember dragon</button>
+          <button class="tab" type="button" data-who="frost" data-label="Frost wyrm" aria-pressed="false">Frost wyrm</button>
+          <button class="tab" type="button" data-who="obsidian" data-label="Obsidian dragon" aria-pressed="false">Obsidian dragon</button>
+          <button class="tab" type="button" data-who="storm" data-label="Storm wyrm" aria-pressed="false">Storm wyrm</button>
+          <button class="tab" type="button" data-who="swamp" data-label="Swamp drake" aria-pressed="false">Swamp drake</button>
+          <button class="tab" type="button" data-who="fairy" data-label="Butterfly fairy" aria-pressed="false">Butterfly fairy</button>
+        </div>
+        <img class="pic" src="img/turn/ember-three_quarter.webp" width="720" height="420" tabindex="0" loading="lazy" decoding="async" alt="Ember dragon in Minecraft, three-quarter view. A real in-game picture.">
+        <p class="nm" data-cap aria-live="polite"></p>
+        <div class="tabs" role="group" aria-label="Pick a side">
+          <button class="tab" type="button" data-view="0" aria-pressed="false">Front</button>
+          <button class="tab" type="button" data-view="1" aria-pressed="true">Three-quarter</button>
+          <button class="tab" type="button" data-view="2" aria-pressed="false">Side</button>
+          <button class="tab" type="button" data-view="3" aria-pressed="false">Back</button>
+        </div>
+        <p class="note">Real Minecraft screenshots from four sides &mdash; drag sideways or use arrow keys to turn.</p>
+      </div>
+    </div>
+
+    <ul class="mosaic">
+      <li class="wide">
+        <figure data-lightbox data-caption="Five custom rideable dragons with distinct palettes and wing styles in Minecraft" tabindex="0" role="button">
+          <div class="m-img"><img class="shot" data-shot="ingame-dragons" src="img/ingame/dragons.webp" width="1600" height="249" loading="lazy" decoding="async" alt="Five custom dragons in a row in Minecraft: white, purple-black, green, golden and crimson."></div>
+          <figcaption>Five custom dragons, five looks <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure data-lightbox data-caption="Articulated leathery and feathered wings in Minecraft: green drake, winged wolf and winged stag" tabindex="0" role="button">
+          <div class="m-img"><img class="shot" data-shot="ingame-wings" src="img/ingame/wings.webp" width="1200" height="700" loading="lazy" decoding="async" alt="Three winged creatures in Minecraft from front, side and above: a green drake, a winged wolf and a winged stag."></div>
+          <figcaption>Leathery &amp; feathered wings: drake, wolf &amp; stag <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure data-lightbox data-caption="Stained-glass butterfly fairy built and rendered in Minecraft" tabindex="0" role="button">
+          <div class="m-img"><img class="shot contain-shot" data-shot="ingame-fairy" src="img/ingame/fairy.webp" width="560" height="440" loading="lazy" decoding="async" alt="A small fairy with large stained-glass butterfly wings in Minecraft."></div>
+          <figcaption>Stained-glass butterfly fairy in-game <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure data-lightbox data-caption="Visual Blueprint rule live at night: the humming stone makes nearby animals glow" tabindex="0" role="button">
+          <div class="m-img"><img class="shot" data-shot="ingame-rules" src="img/ingame/rules.webp" width="960" height="600" loading="lazy" decoding="async" alt="At night in Minecraft, a cow glows with a white outline next to a humming custom stone block."></div>
+          <figcaption>Visual Blueprint rule: humming stone glows mobs <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ==================== 5. 3D ITEM SPINNER, SOUNDS & ART VAULT ==================== -->
+<section id="showcase" class="bg-oak">
+  <div class="wrap">
+    <h2>Original Pixel Art &amp; Synthesized Sounds</h2>
+    <p class="lede">Every texture, 3D dropped-item model and sound effect below is generated natively by SlothMod &mdash; <strong>zero game assets copied, zero image generators required.</strong></p>
+
+    <div class="engine">
+      <div id="item3d" class="stage" data-src="img/showcase/">
+        <div class="tabs" role="group" aria-label="Art category">
+          <button class="tab" type="button" data-tab="guns" aria-pressed="true">Guns</button>
+          <button class="tab" type="button" data-tab="tools" aria-pressed="false">Tools</button>
+          <button class="tab" type="button" data-tab="food" aria-pressed="false">Food</button>
+          <button class="tab" type="button" data-tab="blocks" aria-pressed="false">Blocks</button>
+        </div>
+        <canvas class="view" width="680" height="680" tabindex="0" role="img" aria-label="Spinning 3D pixel art made by SlothMod."></canvas>
+        <p class="nm" data-name aria-live="polite"></p>
+        <div class="picks" role="group" aria-label="Choose an item or block">
+          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="rifle" data-label="Rifle" aria-label="Rifle" aria-pressed="true"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="pistol" data-label="Pistol" aria-label="Pistol" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="shotgun" data-label="Shotgun" aria-label="Shotgun" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="revolver" data-label="Revolver" aria-label="Revolver" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="sniper" data-label="Sniper rifle" aria-label="Sniper rifle" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="smg" data-label="SMG" aria-label="SMG" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="ruby_sword" data-label="Ruby sword" aria-label="Ruby sword" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="emerald_pickaxe" data-label="Emerald pickaxe" aria-label="Emerald pickaxe" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="golden_axe" data-label="Golden axe" aria-label="Golden axe" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="bow" data-label="Bow" aria-label="Bow" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="magic_staff" data-label="Magic staff" aria-label="Magic staff" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="iron_shield" data-label="Iron shield" aria-label="Iron shield" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="honey_cookie" data-label="Honey cookie" aria-label="Honey cookie" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="bread" data-label="Bread" aria-label="Bread" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="cake" data-label="Cake" aria-label="Cake" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="steak" data-label="Steak" aria-label="Steak" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="apple" data-label="Apple" aria-label="Apple" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="potion" data-label="Potion" aria-label="Potion" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="ruby_ore" data-label="Ruby ore" aria-label="Ruby ore" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="planks" data-label="Planks" aria-label="Planks" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="log" data-label="Log" aria-label="Log" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="brick" data-label="Bricks" aria-label="Bricks" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="crystal" data-label="Crystal block" aria-label="Crystal block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="grass" data-label="Grass block" aria-label="Grass block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="magic" data-label="Magic block" aria-label="Magic block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="gold" data-label="Gold block" aria-label="Gold block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+        </div>
+        <button class="btn sm" type="button" data-spin>Stop spinning</button>
+      </div>
+
+      <div class="plaque" style="padding:20px">
+        <h3 class="sh">Interactive 3D Pixel Art</h3>
+        <p>Every 16&times;16 texture turns into a crisp voxel model just like a dropped Minecraft item. <strong>Drag</strong> to spin, <strong>click</strong> or press <kbd>Enter</kbd> for the next piece, or use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> keys.</p>
+        <p>Inside SlothMod, the <strong>Art Picker</strong> offers multiple styles of every piece — and you can repaint any pixel live in 3D.</p>
+        <h3 class="sh" style="margin-top:20px">614 Synthesized Sounds + Music</h3>
+        <p>Click to preview real sounds generated inside SlothMod (plus seamless area &amp; boss music loops and playable 24-note instruments):</p>
+        <div class="sounds" role="group" aria-label="Sound samples">
+          <a class="btn sm" href="media/sound-squeak.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Squeak</a>
+          <a class="btn sm" href="media/sound-chime.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Chime</a>
+          <a class="btn sm" href="media/sound-zap.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Zap</a>
+          <a class="btn sm" href="media/sound-growl.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Growl</a>
+          <a class="btn sm" href="media/sound-rifle-shot.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Rifle shot</a>
+          <a class="btn sm" href="media/sound-reload.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Reload</a>
+        </div>
+      </div>
+    </div>
+
+    <details class="art-vault">
+      <summary>Open Full Engine Art Vault &mdash; 70+ Item Shapes &amp; 40 Block Textures</summary>
+      <div class="vault-body">
+        <figure>
+          <div class="vault-scroll"><img src="img/showcase/sheet-items.png" width="1792" height="832" loading="lazy" decoding="async" alt="Sheet of 70+ pixel-art item shapes: swords, tools, gems, food, armor, books, keys and firearms."></div>
+          <figcaption>70+ built-in item shapes &mdash; customize any material, palette and 3D detail.</figcaption>
+        </figure>
+        <figure>
+          <div class="vault-scroll"><img src="img/showcase/sheet-blocks.png" width="1456" height="592" loading="lazy" decoding="async" alt="Sheet of 40 seamless pixel-art block textures: stone, wood, logs, metals, ores, crystal, brick, lava, water and grass."></div>
+          <figcaption>40 seamless block materials with matching tops, sides and wood-set variants.</figcaption>
+        </figure>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ==================== 6. CAPABILITIES, VERSIONS, SAFETY, CHEST & FAQ ==================== -->
+<section id="trust" class="bg-deepslate">
+  <div class="wrap">
+    <h2>Built for Players, Safe on Your PC</h2>
+    <p class="lede">Everything you need to create, test and share mods — running locally on Windows with zero accounts, zero subscriptions, and full ownership of your creations.</p>
+
+    <ul class="cap-grid">
+      <li class="cap-card"><span class="ic"><img src="img/ico-mob.png" width="30" height="30" alt=""></span><div><h3>Creatures, Dragons &amp; Bosses</h3><p>Rideable 8-element dragons, breakable-limb bosses, Capture Orbs, genetics and keyframe-animated mobs.</p></div></li>
+      <li class="cap-card"><span class="ic"><img src="img/ico-sword.png" width="30" height="30" alt=""></span><div><h3>Weapons, Armor &amp; 3D Paint</h3><p>3D sculpted blades, guns, spell wheels, parry/grapple/wall-run combat and live 3D texture painting.</p></div></li>
+      <li class="cap-card"><span class="ic"><img src="img/ico-castle.png" width="30" height="30" alt=""></span><div><h3>Quests, Realms &amp; Campaigns</h3><p>Custom biomes, standing portals, multi-room dungeons, NPC dialogue cutscenes, moving ships and boss music.</p></div></li>
+      <li class="cap-card"><span class="ic"><img src="img/ico-chip.png" width="30" height="30" alt=""></span><div><h3>Any AI &mdash; or $0 Local &amp; Offline</h3><p>Create visually offline for $0, or plug in cloud AIs, free tiers, LM Studio or Ollama with spending caps.</p></div></li>
+      <li class="cap-card"><span class="ic"><img src="img/ico-shield.png" width="30" height="30" alt=""></span><div><h3>Safe Backups &amp; Crash Repair</h3><p>Sandbox builds, pre-build safety scans, full version history, one-click Undo and plain-English crash help.</p></div></li>
+      <li class="cap-card"><span class="ic"><img src="img/ico-chest.png" width="30" height="30" alt=""></span><div><h3>100% Yours to Publish</h3><p>Real <code>.jar</code> mods with player guides and banner cards — free to share or monetize on Modrinth &amp; CurseForge.</p></div></li>
+    </ul>
+
+    <div class="trust-split">
+      <div class="plaque" style="padding:16px">
+        <div class="table-wrap">
+          <table>
+            <caption>Supported Minecraft Targets (Windows 10 &amp; 11, 64-bit)</caption>
+            <thead><tr><th scope="col">Minecraft</th><th scope="col">Fabric</th><th scope="col">NeoForge</th><th scope="col">Forge</th><th scope="col">Notes</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">26.3</th><td class="flag">Flagship</td><td class="flag">Flagship</td><td class="no">&mdash;</td><td>Every new studio, dragon camera &amp; world tool ships here first.</td></tr>
+              <tr><th scope="row">1.21.1</th><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">&mdash;</td><td>Supported with batch updates &amp; plain notes.</td></tr>
+              <tr><th scope="row">1.20.1</th><td class="yes">Yes</td><td class="no">&mdash;</td><td class="yes">Yes</td><td>Supported with batch updates &amp; plain notes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin:10px 0 0;font-size:.86rem;color:var(--muted)">Needs ~4 GB free disk space and a Minecraft Java Edition account to play. Installs per-user with no admin prompt and brings its own Java &amp; build tools. Existing 26.1 / 26.2 projects move to 26.3 in one click.</p>
+      </div>
+
+      <div class="plaque privacy-box">
+        <div>
+          <h3>Privacy &amp; Safety Promise</h3>
+          <p style="margin-top:6px">SlothMod runs <strong>100% locally on your Windows PC</strong> with no accounts, no cookies and no analytics.</p>
+          <ul style="margin-top:8px">
+            <li>API keys stay inside Windows Credential Manager.</li>
+            <li>Microsoft login stays in the official Minecraft launcher.</li>
+            <li>AI-written code is scanned before every build.</li>
+            <li>Mods you create are yours under SlothMod Free Use Terms.</li>
+          </ul>
+        </div>
+        <div class="doclinks">
+          <a href="https://github.com/DeusesPR/SlothMod/blob/main/PRIVACY.md" target="_blank" rel="noopener">PRIVACY.md</a>
+          <a href="https://github.com/DeusesPR/SlothMod/blob/main/LICENSE" target="_blank" rel="noopener">LICENSE</a>
+          <a href="https://github.com/DeusesPR/SlothMod/blob/main/CHANGELOG.md" target="_blank" rel="noopener">CHANGELOG.md</a>
+          <a href="https://github.com/DeusesPR/SlothMod/blob/main/THIRD_PARTY_LICENSES.md" target="_blank" rel="noopener">THIRD_PARTY_LICENSES.md</a>
+          <a href="https://github.com/DeusesPR/SlothMod/blob/main/SECURITY.md" target="_blank" rel="noopener">SECURITY.md</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="chest-row">
+      <div class="chest" id="chest">
+        <span class="lock" aria-hidden="true"></span>
+        <img src="img/ico-chest.png" width="44" height="44" alt="">
+        <div class="cb">
+          <span class="ct">Release Chest &middot; SlothMod v1.0.0</span>
+          <span class="cv" id="chest-v">Direct Windows 10 &amp; 11 Installer (64-bit)</span>
+          <div class="c-actions">
+            <a class="btn go sm" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe" rel="noopener">Download .exe</a>
+            <a class="btn sm" href="https://github.com/DeusesPR/SlothMod/releases/latest" target="_blank" rel="noopener">All Releases</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="plaque support-card">
+        <div>
+          <h3>Support SlothMod</h3>
+          <p>SlothMod is free for everyone. Optional tips help keep development moving &mdash; zero external scripts loaded here.</p>
+          <a class="btn go sm" href="https://buymeacoffee.com/SlothMod" target="_blank" rel="noopener">Buy Me a Coffee</a>
+        </div>
+        <div class="qr">
+          <img src="img/support-qr.png" width="108" height="108" loading="lazy" decoding="async" alt="QR code for buymeacoffee.com/SlothMod">
+          <span>Scan with phone</span>
+        </div>
+      </div>
+    </div>
+
+    <div id="faq">
+      <div class="faq-head">
+        <h2>Quick Answers</h2>
+        <canvas class="mini" width="16" height="16" aria-hidden="true"></canvas>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item"><summary>Is SlothMod really free &mdash; and do I own the mods I make?</summary><div class="ans"><p>Yes. SlothMod is free to download and use, and every mod you build belongs to you. Share, publish, or monetize your mods freely on Modrinth or CurseForge under the SlothMod Free Use Terms.</p></div></details>
+        <details class="faq-item"><summary>Do I need to know how to code or pay for AI?</summary><div class="ans"><p>No. All six visual studios (World Sculptor, Build Studio, Whole-Game Studio, Brain &amp; Colonies, 3D Sculpt/Paint/FX, and Visual Blueprints) work 100% offline at $0 AI cost. If you want AI help, you can use free tiers, local models via LM Studio / Ollama, or your own API key with spending caps &mdash; and coders can open the built-in Java editor anytime.</p></div></details>
+        <details class="faq-item" id="smartscreen"><summary>Why does Windows show a blue SmartScreen warning?</summary><div class="ans"><p>Because SlothMod is free and not paid-signed yet, Windows SmartScreen can show "Windows protected your PC" on first download. Click <strong>More info</strong>, then <strong>Run anyway</strong>. Only run installers downloaded directly from <strong>slothmod.com</strong> or <a href="https://github.com/DeusesPR/SlothMod/releases/latest" target="_blank" rel="noopener">GitHub Releases</a>.</p></div></details>
+        <details class="faq-item"><summary>How does SlothMod keep my PC and worlds safe?</summary><div class="ans"><p>AI changes happen in a sandbox copy with version History and one-click Undo, and AI-written code is scanned before every build. Imported <code>.mca</code> worlds are never overwritten in place &mdash; SlothMod always exports a clean copy.</p></div></details>
+        <details class="faq-item"><summary>Which Minecraft versions and mod loaders are supported?</summary><div class="ans"><p>Minecraft <strong>26.3</strong> (Fabric &amp; NeoForge, flagship), <strong>1.21.1</strong> (Fabric &amp; NeoForge), and <strong>1.20.1</strong> (Fabric &amp; Forge). Existing 26.1 and 26.2 projects upgrade to 26.3 in one click.</p></div></details>
+        <details class="faq-item"><summary>What about privacy, accounts, and my API keys?</summary><div class="ans"><p>No accounts, no cookies and no tracking. API keys are stored in Windows Credential Manager, your Microsoft account stays in the official Minecraft launcher, and prompts go only to the AI provider you pick.</p></div></details>
+        <details class="faq-item"><summary>Does it work on Mac or Linux, or how do I report a bug?</summary><div class="ans"><p>SlothMod currently runs on 64-bit Windows 10 and 11. If anything goes wrong, click <strong>Report a problem</strong> inside the app (keys and PC usernames are stripped automatically) or open an issue on <a href="https://github.com/DeusesPR/SlothMod/issues/new/choose" target="_blank" rel="noopener">GitHub</a>.</p></div></details>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- Fullscreen Pixel Lightbox -->
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lb-cap" hidden>
+  <div class="lb-panel">
+    <div class="lb-top">
+      <span class="lb-cap" id="lb-cap"></span>
+      <button class="lb-close" id="lb-close" type="button" aria-label="Close fullscreen preview">Close (Esc)</button>
+    </div>
+    <div class="lb-body">
+      <img id="lb-img" src="data:image/gif;base64,R0lGODlhAQABAAAAACw=" alt="">
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="crawl" aria-hidden="true"><i></i></div>
+    <img class="f-sloth" src="img/sloth.png" width="42" height="42" alt="">
+    <p><strong>SlothMod</strong> &mdash; Free Windows Minecraft Mod Studio (<a href="https://github.com/DeusesPR/SlothMod/blob/main/LICENSE" target="_blank" rel="noopener">Free Use Terms</a>).</p>
+    <div class="links">
+      <a href="https://github.com/DeusesPR/SlothMod" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/DeusesPR/SlothMod/releases/latest" target="_blank" rel="noopener">Releases</a>
+      <a href="https://github.com/DeusesPR/SlothMod/blob/main/CHANGELOG.md" target="_blank" rel="noopener">Changelog</a>
+      <a href="https://github.com/DeusesPR/SlothMod/issues/new/choose" target="_blank" rel="noopener">Report a Bug</a>
+      <a href="https://github.com/DeusesPR/SlothMod/discussions" target="_blank" rel="noopener">Community</a>
+      <a href="https://buymeacoffee.com/SlothMod" target="_blank" rel="noopener">Support</a>
+    </div>
+    <p class="legal">Fan-made tool. Not an official Minecraft product and not approved by or associated with Mojang AB or Microsoft Corporation.</p>
+    <p class="legal">100% static page with zero cookies, zero trackers and zero external requests. Pixel art is original; fonts use Pixelify Sans &amp; VT323 (SIL OFL 1.1: <a href="fonts/OFL.txt">OFL.txt</a>, <a href="fonts/OFL-VT323.txt">OFL-VT323.txt</a>).</p>
+  </div>
+</footer>
+
+<script src="fun.js" defer></script>
+<script src="game.js" defer></script>
+<script src="item3d.js" defer></script>
+<script src="turn.js" defer></script>
+</body>
+</html>

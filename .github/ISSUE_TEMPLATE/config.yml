@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Questions and help
+    url: https://github.com/DeusesPR/SlothMod/discussions
+    about: Ask how something works or share what you made. (Enable Discussions in the repository settings.)
+  - name: Report a security problem
+    url: https://github.com/DeusesPR/SlothMod/security/advisories/new
+    about: Please report security problems privately, not in a public issue.

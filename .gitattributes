@@ -1,0 +1,6 @@
+﻿# SlothMod's desktop app lives in a private repository;
+# this public repository hosts releases, player documentation, and the GitHub Pages site.
+docs/** linguist-documentation
+*.html linguist-documentation
+*.js linguist-documentation
+*.css linguist-documentation
