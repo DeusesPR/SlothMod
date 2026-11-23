@@ -12,7 +12,7 @@ Free for Windows · works with any AI, cloud or local · no coding required, ful
 [![Downloads](https://img.shields.io/github/downloads/DeusesPR/SlothMod/total?color=2e7d22)](https://github.com/DeusesPR/SlothMod/releases)
 [![Free to use](https://img.shields.io/badge/price-free-2e7d22)](LICENSE)
 
-[Website](https://slothmod.com/) · [New in 1.0](#new-in-10) · [Showcase](#showcase) · [First mod in 3 steps](#your-first-mod-in-3-steps) · [Versions and AIs](#what-it-works-with) · [Install](#install) · [Help](#help-and-feedback) · [Support](#support-slothmod)
+[Website](https://slothmod.com/) · [New in 1.1](#new-in-11) · [Showcase](#showcase) · [First mod in 3 steps](#make-a-mod-in-3-steps) · [Versions and AIs](#what-it-works-with) · [Install](#install) · [Help](#help-and-feedback) · [Support](#support-slothmod)
 
 <br>
 
@@ -37,7 +37,13 @@ Free for Windows · works with any AI, cloud or local · no coding required, ful
 - **Reopens `.jar` mods, exports Overlay Packs, wires Visual Blueprints & includes Code mode.** Click **Open `.jar` Mod** to reopen any SlothMod `.jar` with its full project, custom art, Blueprints and code intact, or open another Fabric, NeoForge or Forge `.jar` to tweak textures, sounds and recipes and export a clean `.zip` Overlay Pack. Switch anytime between **Visual Blueprints**, plain-English sentences and dark-theme Java **Code** mode.
 - **Tests before anything is kept — and manages your mods too.** One button starts Minecraft with your mod, an automatic in-game check tries your new content before you keep it, **Sync to Game (`F3+T`)** pushes live art changes without restarting, and the built-in **Modrinth** manager handles mods, modpacks, resource packs, shaders and game profiles.
 
-## New in 1.0
+## New in 1.1
+
+- **Thematic RPG HUD, Crystal Status Orbs & Container Skins (All 6 Targets).** Replace giant rows of hearts with a single beveled RPG Health Bar (`20` to `10,000+` HP), optional animated Crystal Status Orbs, compact Armor badges, themed toasts and matching pixel-art skins for your inventory, crafting table, furnace, chest, anvil, grindstone and stonecutter across six visual styles — hiding hunger drumsticks for undead, construct and ghost characters while showing Sustenance + Saturation for living characters.
+- **Unclamped Player Origins (`Lv 1` to `10,000`), Custom `64×64` Player Skins, Live Disguises & 3D Regalia.** Offer side-by-side `Lv 1` newcomer and `Lv 100+` sovereign starts in an auto-opening Origin & Class picker with live 3D previews, switchable 12-class racial and job trees, Guild bounty ranks, player-founded Guild Halls, saved starter kits when switching origins, custom `64×64` skins with glowing eyes, capes and 3D crowns/pauldrons/orbs, and live Disguise Signets. *(In 1.1.0, Game Studio tunes level caps, starting levels, guild rules and skin toggles by hand; adding custom class or origin lists uses AI chat, with a hand list editor coming next.)*
+- **All-Custom Living Towns, Multi-Kingdom Rule, Ritual Magic & Modpack Harmony.** Fill towns, farms, caravans, sieges and multi-floor ring-gated dungeons entirely with your mod's own sculpted bosses and `64×64` layered townspeople (no default villagers or golems); rule multiple towns through elections, charters or sieges; cast high-tier ritual magic with relic immunities and friendly-fire protection; guide players with an illustrated in-game **Codex (`K`)**; and build conflict-free modpacks with **Verify Pack** health checks and automatic keybind/HUD harmony.
+
+### Core Studios in SlothMod 1.x
 
 <table>
   <tr>
@@ -97,21 +103,21 @@ Everything here was drawn by SlothMod's own art engine, the one that makes the a
 <sub><b>Every block material the engine knows</b> (with separate tops for logs, bone and grass). They tile without seams.</sub>
 </p>
 
-### Creatures and bosses in Minecraft
+### Creatures, architecture &amp; custom worlds in Minecraft
 
 <p align="center">
 <img src="docs/img/ingame/dragons.webp" width="100%" alt="Five dragons in a row in Minecraft: white, purple-black, small green, golden and red."><br>
-<sub><b>Five dragons.</b> On the <a href="https://slothmod.com/#creatures">website</a> you can look at dragons and a fairy from four sides.</sub>
+<sub><b>Five custom dragons.</b> On the <a href="https://slothmod.com/#ingame">website</a> you can turn dragons and winged creatures from four sides.</sub>
 </p>
 
 <table>
   <tr>
-    <td width="50%" align="center"><img src="docs/img/ingame/fairy.webp" width="100%" alt="A small fairy with large stained-glass butterfly wings in Minecraft."><br><sub><b>A fairy with butterfly wings</b></sub></td>
-    <td width="50%" align="center"><img src="docs/img/ingame/drake.webp" width="75%" alt="A red dragon with glowing wing edges standing in Minecraft."><br><sub><b>A dragon with membrane wings</b></sub></td>
+    <td width="50%" align="center"><img src="docs/img/ingame/cathedral.webp" width="100%" alt="Gothic cathedral with twin carved spires and flying buttresses at sunset in Minecraft 26.3."><br><sub><b>Gothic Cathedral built in Build Studio</b></sub></td>
+    <td width="50%" align="center"><img src="docs/img/ingame/solarpunk.webp" width="100%" alt="Solarpunk hillside enclave with botanical towers and skybridges in Minecraft 26.3."><br><sub><b>Solarpunk Enclave with skybridges &amp; gardens</b></sub></td>
   </tr>
   <tr>
+    <td width="50%" align="center"><img src="docs/img/ingame/mountains.webp" width="100%" alt="Jagged snow-dusted mountain range generated by World Sculptor in Minecraft 26.3."><br><sub><b>Alpine mountain range from World Sculptor</b></sub></td>
     <td width="50%" align="center"><img src="docs/img/ingame/wings.webp" width="100%" alt="A green drake with leathery wings, a winged wolf and a winged stag with feathered wings, seen from several sides."><br><sub><b>Leathery and feathered wings</b></sub></td>
-    <td width="50%" align="center"><img src="docs/img/showcase/ingame-fabric-26.3.png" width="100%" alt="Real Minecraft 26.3 gameplay showing a Stone Warden boss bar, custom winged dragon, custom blocks and Stamina/Mana HUD bars."><br><sub><b>Boss bars, custom HUDs &amp; creatures in Minecraft 26.3</b></sub></td>
   </tr>
 </table>
 
@@ -169,7 +175,7 @@ Your AI provider may charge you; Gemini and Mistral have free tiers, OpenRouter 
 
 ## Install
 
-1. Download [`SlothMod_1.0.0_x64-setup.exe`](https://github.com/DeusesPR/SlothMod/releases/download/v1.0.0/SlothMod_1.0.0_x64-setup.exe) (or pick a version on the [releases page](https://github.com/DeusesPR/SlothMod/releases)) and run it. It installs for your user only, with no admin prompt.
+1. Download [`SlothMod_1.1.0_x64-setup.exe`](https://github.com/DeusesPR/SlothMod/releases/download/v1.1.0/SlothMod_1.1.0_x64-setup.exe) (or pick a version on the [releases page](https://github.com/DeusesPR/SlothMod/releases)) and run it. It installs for your user only, with no admin prompt.
 2. **Why Windows shows a warning.** SlothMod is free and not paid-signed, so Windows SmartScreen may show a blue "Windows protected your PC" box. That is normal for a free app. Click **More info**, then **Run anyway**. Only do this for an installer from this repository's Releases page. More in [PRIVACY.md](PRIVACY.md) and [SECURITY.md](SECURITY.md).
 
 You need Windows 10 or 11 (64-bit), about 4 GB of free disk space, internet for the first setup, and Minecraft Java Edition to play what you make. The app updates itself and keeps your mods, settings and keys.
@@ -182,7 +188,7 @@ What stays: free, Windows, works with cheap or free AI (including AI on your own
 
 ## Status
 
-**What works in this version (1.0.0):** the complete SlothMod 1.0 creation suite — **World Studio** (60 fps stepped 3D voxel terrain explorer, live 3D/2D terrain/water/surface/tree sculpting with Undo/Redo, 3D building drag-move/rotate/copy/bulldoze, `.mca` world import, drawing & OpenStreetMap real-place importers and **Pretty Light**), **Build Studio** (3D architecture composer, ornate facades, 16-room furnisher, free sketch & vision-photo importers, `.nbt`/`.schem`/`.litematic` schematic import, smart wood/stone family swap, optional 2-call 3D look review, `512+`-block mega-structures and craftable in-game Blueprint scrolls), **Brain Studio & Colony Studio** (12 `$0` pixel-art starter minds, 24-hour Calm/Raid simulator, live AI companion skills, player-run Town Hall colonies with `Lv 1–3` builders, warehouses, couriers, traits/moods, painted zones, `1–4` priorities & Storyteller events), **Game Studio & Theme Studio** (whole-game composer, 8 `$0` Instant Overhaul Worlds, living chronicles & rival warlords, seasons, dynamic markets, civic banks/laws/elections, tabletop Game Master scepters, multi-lane Tower Defense, Capture Orbs & genetics, vehicles/contraptions, engineering/power/rail/habitats, stealth/mysteries, playable music & custom 6-card pixel-art theme styling), plus **3D Sculpt**, **3D Paint & Grab**, **Keyframes** (`.bbmodel` / `.animation.json`), **Slash Commands**, **Advancement Trees**, **Game Rules**, **Villager Professions**, **Custom Biomes, Dimensions, Portals & Dungeons**, **Dialogue Graphs**, **Cutscenes**, **Procedural Music**, **World Rules**, **Workstations**, **Custom Trees**, **Open `.jar` Mod**, **Overlay Packs**, **Visual Blueprints**, **Sync to Game (`F3+T`)** and **Code** mode — compiles with real Gradle across all six active targets (`Fabric 26.3`, `NeoForge 26.3`, `Fabric 1.21.1`, `NeoForge 1.21.1`, `Fabric 1.20.1`, `Forge 1.20.1`), passes dedicated-server verification on `Fabric 26.3` and `NeoForge 26.3`, and is verified in live Minecraft client sessions with automatic in-game mod checks on `26.3` and `1.21.1`.
+**What works in this version (1.1.0):** the complete SlothMod 1.1 creation suite — **World Studio** (60 fps stepped 3D voxel terrain explorer, live 3D/2D terrain/water/surface/tree sculpting with Undo/Redo, 3D building drag-move/rotate/copy/bulldoze, `.mca` world import, drawing & OpenStreetMap real-place importers, foliage-clean town placement that preserves gardens & timber frames, and **Pretty Light**), **Build Studio** (3D architecture composer, ornate facades, 16-room furnisher, free sketch & vision-photo importers, `.nbt`/`.schem`/`.litematic` schematic import, smart wood/stone family swap, optional 2-call 3D look review, `512+`-block mega-structures and craftable in-game Blueprint scrolls), **Brain Studio & Colony Studio** (12 `$0` pixel-art starter minds, 24-hour Calm/Raid simulator, shared world rumors, zero-click local PC AI detection, live AI companion skills, player-run Town Hall colonies with `Lv 1–3` builders, warehouses, couriers, traits/moods, painted zones, `1–4` priorities & Storyteller events), **Game Studio & Theme Studio** (whole-game composer, 8+ `$0` Instant Overhaul Worlds, unclamped `Lv 1..10,000` player origins & 12-class trees, custom `64×64` player/NPC skins, live disguises & 3D regalia, thematic 6-target RPG HUD, crystal status orbs & reskinned vanilla containers, illustrated in-game Codex, 10-floor ring-gated dungeons, Tier 1–11 ritual magic & World Relics, multi-town laws/elections/charters, living chronicles & rival warlords, seasons, dynamic markets, tabletop Game Master scepters, multi-lane Tower Defense, Capture Orbs & genetics, vehicles/contraptions, engineering/power/rail/habitats, stealth/mysteries, playable music, curated hybrid modpack presets & custom 6-card pixel-art theme styling), plus **3D Sculpt**, **3D Paint & Grab**, **Keyframes** (`.bbmodel` / `.animation.json`), **Slash Commands**, **Advancement Trees**, **Game Rules**, **Villager Professions**, **Custom Biomes, Dimensions, Portals & Dungeons**, **Dialogue Graphs**, **Cutscenes**, **Procedural Music**, **World Rules**, **Workstations**, **Custom Trees**, **Open `.jar` Mod**, **Overlay Packs**, **Visual Blueprints**, **Sync to Game (`F3+T`)** and **Code** mode — compiles with real Gradle across all six active targets (`Fabric 26.3`, `NeoForge 26.3`, `Fabric 1.21.1`, `NeoForge 1.21.1`, `Fabric 1.20.1`, `Forge 1.20.1`), passes dedicated-server verification on `Fabric 26.3` and `NeoForge 26.3`, and is verified in live Minecraft client sessions with automatic in-game mod checks on `26.3` and `1.21.1`.
 
 **Still being polished:** full unassisted start-to-finish multiplayer playthroughs across every combination of the newest overhaul systems are still being fine-tuned in real play; natural World Studio terrain generation, the newest dragon riding/camera features and some visual polish lead on `26.3` while `1.21.1` and `1.20.1` receive batch parity with plain notes in the app; portals start from the Overworld; HUD-bar hiding and damage multipliers in **World Rules** are skipped on `Fabric 1.20.1` and `Fabric 1.21.1`; and third-party `.jar` tweaking intentionally edits textures, sounds, recipes and data rather than decompiling compiled Java classes. The safety check is a strong guardrail, not a guarantee: only play mods you trust. The installer is not paid-signed, so Windows SmartScreen may show a warning.
 

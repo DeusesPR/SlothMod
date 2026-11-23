@@ -28,7 +28,7 @@
 <meta property="og:locale" content="en_US">
 <meta name="color-scheme" content="dark">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SlothMod","applicationCategory":"GameApplication","applicationSubCategory":"Minecraft mod maker and mod manager","operatingSystem":"Windows 10, Windows 11","softwareVersion":"1.0.0","description":"Free Windows desktop studio that turns plain English or six offline $0 visual studios into real Java Edition Minecraft mods for Fabric, NeoForge and Forge.","url":"https://slothmod.com/","downloadUrl":"https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe","image":"https://slothmod.com/img/og.png","license":"https://github.com/DeusesPR/SlothMod/blob/main/LICENSE","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+{"@context":"https://schema.org","@type":"SoftwareApplication","name":"SlothMod","applicationCategory":"GameApplication","applicationSubCategory":"Minecraft mod maker and mod manager","operatingSystem":"Windows 10, Windows 11","softwareVersion":"1.1.0","description":"Free Windows desktop studio that turns plain English or six offline $0 visual studios into real Java Edition Minecraft mods for Fabric, NeoForge and Forge.","url":"https://slothmod.com/","downloadUrl":"https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.1.0_x64-setup.exe","image":"https://slothmod.com/img/og.png","license":"https://github.com/DeusesPR/SlothMod/blob/main/LICENSE","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
 </script>
 <link rel="preload" href="fonts/pixelify-sans-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/vt323-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -398,7 +398,7 @@ section{padding:52px 0;border-top:4px solid #000;position:relative}
 .tab:hover{background:#30374a;color:#fff}
 .tab[aria-pressed=true]{background:var(--emerald);color:#fff;box-shadow:inset 2px 2px 0 #82e368,inset -2px -2px 0 #194a11;text-shadow:1px 1px 0 #000}
 
-.mosaic{display:grid;gap:16px;grid-template-columns:repeat(3,minmax(0,1fr));list-style:none;margin:0;padding:0}
+.mosaic{display:grid;gap:16px;grid-template-columns:repeat(2,minmax(0,1fr));list-style:none;margin:0;padding:0}
 .mosaic li.wide{grid-column:1/-1}
 .mosaic li.wide .m-img{aspect-ratio:auto;background:#78a7f0}
 .mosaic li.wide img{width:100%;height:auto;object-fit:contain}
@@ -592,13 +592,13 @@ footer .legal{font-size:.82rem;color:var(--muted)}
     <a class="slot-nav" href="#trust"><i class="n">6</i><img src="img/ico-shield.png" width="20" height="20" alt="">FAQ</a>
     <span class="sp"></span>
     <button class="slot-nav snd" id="snd" type="button" aria-pressed="false" aria-label="Toggle sound effects"><i class="n" id="snd-n">off</i><img src="img/ico-note.png" width="20" height="20" alt="">Sound</button>
-    <a class="slot-nav get" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe" rel="noopener"><img src="img/ico-chest.png" width="20" height="20" alt="">Download</a>
+    <a class="slot-nav get" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.1.0_x64-setup.exe" rel="noopener"><img src="img/ico-chest.png" width="20" height="20" alt="">Download</a>
   </nav>
   <span class="scroll-cue" aria-hidden="true">&rsaquo;</span>
 </div>
 
 <div class="ribbon">
-  <b>SlothMod v1.0.0</b> &middot; Free for Windows 10 &amp; 11 &middot; <span>$0 Offline Visual Studios + Optional AI</span> &middot; Fabric &middot; NeoForge &middot; Forge
+  <b>SlothMod v1.1.0</b> &middot; Free for Windows 10 &amp; 11 &middot; <span>$0 Offline Visual Studios + Optional AI</span> &middot; Fabric &middot; NeoForge &middot; Forge
 </div>
 
 <main id="main">
@@ -612,7 +612,7 @@ footer .legal{font-size:.82rem;color:var(--muted)}
       </div>
       <p class="hero-sub">Turn plain English — or <strong>six $0 visual studios</strong> — into real Java Edition Minecraft mods.</p>
       <div class="cta-row">
-        <a class="btn go" id="dl" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe" rel="noopener"><img src="img/ico-chest.png" width="20" height="20" alt="">Download for Windows (Free .exe)</a>
+        <a class="btn go" id="dl" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.1.0_x64-setup.exe" rel="noopener"><img src="img/ico-chest.png" width="20" height="20" alt="">Download for Windows (Free .exe)</a>
         <a class="btn" href="#trailer"><img src="img/ico-gem.png" width="20" height="20" alt="">Watch Software Trailer</a>
       </div>
       <details class="smart-help" id="winwarning">
@@ -700,8 +700,8 @@ footer .legal{font-size:.82rem;color:var(--muted)}
 
     <div class="trailer-grid">
       <div class="cinema plaque-oak">
-        <div class="cinema-screen" data-lightbox data-caption="SlothMod 1.0 Software Trailer — six $0 visual studios, 60 FPS 3D voxel world sculpting, 3D architecture, NPC minds, colonies, 3D weapon sculpting, particle FX, visual Blueprints and live Minecraft 26.3 gameplay" tabindex="0" role="button" aria-label="Open trailer fullscreen">
-          <img id="trailer-media" class="shot" data-shot="software-trailer" src="img/v10/slothmod-trailer.webp" width="1280" height="720" loading="lazy" decoding="async" alt="SlothMod 1.0 software trailer showcasing the launcher, 60 FPS 3D World Sculptor, Build Studio castles, Whole-Game &amp; Theme Studios, Brain &amp; Colony Studios, 3D Sculpt &amp; FX, visual Blueprints and custom mods in Minecraft 26.3.">
+        <div class="cinema-screen" data-lightbox data-caption="SlothMod Software Trailer — six $0 visual studios, 60 FPS 3D voxel world sculpting, 3D architecture, NPC minds, colonies, 3D weapon sculpting, particle FX, visual Blueprints and live Minecraft 26.3 gameplay" tabindex="0" role="button" aria-label="Open trailer fullscreen">
+          <img id="trailer-media" class="shot" data-shot="software-trailer" src="img/v10/slothmod-trailer.webp" width="1280" height="720" loading="lazy" decoding="async" alt="SlothMod software trailer showcasing the launcher, 60 FPS 3D World Sculptor, Build Studio castles, Whole-Game &amp; Theme Studios, Brain &amp; Colony Studios, 3D Sculpt &amp; FX, visual Blueprints and custom mods in Minecraft 26.3.">
           <canvas id="trailer-freeze" hidden aria-hidden="true"></canvas>
           <span class="zoom-pill">Click to Zoom</span>
         </div>
@@ -710,7 +710,7 @@ footer .legal{font-size:.82rem;color:var(--muted)}
             <button class="arena-btn" id="trailer-pause" type="button" aria-pressed="false">Pause Frame</button>
             <button class="arena-btn" id="trailer-replay" type="button">Replay Trailer</button>
           </div>
-          <span style="font:400 .8rem var(--px);color:var(--muted)">Recorded inside SlothMod 1.0 + Minecraft 26.3</span>
+          <span style="font:400 .8rem var(--px);color:var(--muted)">Recorded inside SlothMod + Minecraft 26.3</span>
         </div>
         <div class="chapters" role="group" aria-label="Trailer scenes">
           <button class="chapter-pill" type="button" aria-pressed="true" data-note="Launch straight into six $0 offline visual studios or describe any mod idea in plain English.">1. Launcher &amp; $0 Studios</button>
@@ -822,7 +822,7 @@ footer .legal{font-size:.82rem;color:var(--muted)}
 <section id="ingame" class="bg-deepslate">
   <div class="wrap">
     <h2>Real Mods, Played in Minecraft</h2>
-    <p class="lede">Every picture below is a real in-game screenshot from mods built with SlothMod — rideable dragons, articulated wings, fairies, and custom Blueprint rules.</p>
+    <p class="lede">Every picture below is a real in-game screenshot from mods built with SlothMod &mdash; rideable dragons, Gothic cathedrals, Solarpunk cities, sculpted worlds and winged beasts.</p>
 
     <div class="turnwrap">
       <div id="turn" class="stage">
@@ -854,21 +854,27 @@ footer .legal{font-size:.82rem;color:var(--muted)}
         </figure>
       </li>
       <li>
+        <figure data-lightbox data-caption="68,000-block Duskmere Gothic Cathedral with twin spires and flying buttresses built in Build Studio and rendered in Minecraft 26.3" tabindex="0" role="button">
+          <div class="m-img"><img class="shot" data-shot="ingame-cathedral" src="img/ingame/cathedral.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Gothic cathedral with twin carved spires, flying buttresses and dormers at golden sunset in Minecraft 26.3."></div>
+          <figcaption>Gothic Cathedral built in Build Studio <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure data-lightbox data-caption="33,600-block Sunveil Solarpunk Enclave with stepped garden terraces, cherry trees and upper skybridges in Minecraft 26.3" tabindex="0" role="button">
+          <div class="m-img"><img class="shot" data-shot="ingame-solarpunk" src="img/ingame/solarpunk.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Solarpunk hillside enclave with botanical towers, cherry trees and glass skybridges at sunset in Minecraft 26.3."></div>
+          <figcaption>Solarpunk Enclave with skybridges &amp; gardens <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+      <li>
+        <figure data-lightbox data-caption="Custom alpine mountain pass sculpted in World Studio and generated live in Minecraft 26.3" tabindex="0" role="button">
+          <div class="m-img"><img class="shot" data-shot="ingame-mountains" src="img/ingame/mountains.webp" width="1280" height="720" loading="lazy" decoding="async" alt="Jagged snow-dusted mountain peaks and forested valley generated by SlothMod World Studio in Minecraft 26.3."></div>
+          <figcaption>Alpine mountain range from World Sculptor <span>Zoom +</span></figcaption>
+        </figure>
+      </li>
+      <li>
         <figure data-lightbox data-caption="Articulated leathery and feathered wings in Minecraft: green drake, winged wolf and winged stag" tabindex="0" role="button">
           <div class="m-img"><img class="shot" data-shot="ingame-wings" src="img/ingame/wings.webp" width="1200" height="700" loading="lazy" decoding="async" alt="Three winged creatures in Minecraft from front, side and above: a green drake, a winged wolf and a winged stag."></div>
           <figcaption>Leathery &amp; feathered wings: drake, wolf &amp; stag <span>Zoom +</span></figcaption>
-        </figure>
-      </li>
-      <li>
-        <figure data-lightbox data-caption="Stained-glass butterfly fairy built and rendered in Minecraft" tabindex="0" role="button">
-          <div class="m-img"><img class="shot contain-shot" data-shot="ingame-fairy" src="img/ingame/fairy.webp" width="560" height="440" loading="lazy" decoding="async" alt="A small fairy with large stained-glass butterfly wings in Minecraft."></div>
-          <figcaption>Stained-glass butterfly fairy in-game <span>Zoom +</span></figcaption>
-        </figure>
-      </li>
-      <li>
-        <figure data-lightbox data-caption="Visual Blueprint rule live at night: the humming stone makes nearby animals glow" tabindex="0" role="button">
-          <div class="m-img"><img class="shot" data-shot="ingame-rules" src="img/ingame/rules.webp" width="960" height="600" loading="lazy" decoding="async" alt="At night in Minecraft, a cow glows with a white outline next to a humming custom stone block."></div>
-          <figcaption>Visual Blueprint rule: humming stone glows mobs <span>Zoom +</span></figcaption>
         </figure>
       </li>
     </ul>
@@ -878,63 +884,61 @@ footer .legal{font-size:.82rem;color:var(--muted)}
 <!-- ==================== 5. 3D ITEM SPINNER, SOUNDS & ART VAULT ==================== -->
 <section id="showcase" class="bg-oak">
   <div class="wrap">
-    <h2>Original Pixel Art &amp; Synthesized Sounds</h2>
-    <p class="lede">Every texture, 3D dropped-item model and sound effect below is generated natively by SlothMod &mdash; <strong>zero game assets copied, zero image generators required.</strong></p>
+    <h2>3D Sculpted Weapons, Art &amp; Synthesized Music</h2>
+    <p class="lede">Every multi-part 3D weapon, creature model, block texture and musical track below is generated natively by SlothMod &mdash; <strong>zero game assets copied, zero image generators required.</strong></p>
 
     <div class="engine">
       <div id="item3d" class="stage" data-src="img/showcase/">
         <div class="tabs" role="group" aria-label="Art category">
-          <button class="tab" type="button" data-tab="guns" aria-pressed="true">Guns</button>
-          <button class="tab" type="button" data-tab="tools" aria-pressed="false">Tools</button>
-          <button class="tab" type="button" data-tab="food" aria-pressed="false">Food</button>
+          <button class="tab" type="button" data-tab="weapons" aria-pressed="true">Blades &amp; Staves</button>
+          <button class="tab" type="button" data-tab="ranged" aria-pressed="false">3D Blasters &amp; Bows</button>
+          <button class="tab" type="button" data-tab="mobs" aria-pressed="false">Creatures</button>
           <button class="tab" type="button" data-tab="blocks" aria-pressed="false">Blocks</button>
         </div>
-        <canvas class="view" width="680" height="680" tabindex="0" role="img" aria-label="Spinning 3D pixel art made by SlothMod."></canvas>
+        <canvas class="view" width="680" height="680" tabindex="0" role="img" aria-label="Spinning 3D weapon and creature models made by SlothMod."></canvas>
         <p class="nm" data-name aria-live="polite"></p>
-        <div class="picks" role="group" aria-label="Choose an item or block">
-          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="rifle" data-label="Rifle" aria-label="Rifle" aria-pressed="true"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="pistol" data-label="Pistol" aria-label="Pistol" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="shotgun" data-label="Shotgun" aria-label="Shotgun" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="revolver" data-label="Revolver" aria-label="Revolver" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="sniper" data-label="Sniper rifle" aria-label="Sniper rifle" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="guns" data-kind="item" data-key="smg" data-label="SMG" aria-label="SMG" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="ruby_sword" data-label="Ruby sword" aria-label="Ruby sword" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="emerald_pickaxe" data-label="Emerald pickaxe" aria-label="Emerald pickaxe" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="golden_axe" data-label="Golden axe" aria-label="Golden axe" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="bow" data-label="Bow" aria-label="Bow" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="magic_staff" data-label="Magic staff" aria-label="Magic staff" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="tools" data-kind="item" data-key="iron_shield" data-label="Iron shield" aria-label="Iron shield" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="honey_cookie" data-label="Honey cookie" aria-label="Honey cookie" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="bread" data-label="Bread" aria-label="Bread" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="cake" data-label="Cake" aria-label="Cake" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="steak" data-label="Steak" aria-label="Steak" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="apple" data-label="Apple" aria-label="Apple" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="food" data-kind="item" data-key="potion" data-label="Potion" aria-label="Potion" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="ruby_ore" data-label="Ruby ore" aria-label="Ruby ore" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="planks" data-label="Planks" aria-label="Planks" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="log" data-label="Log" aria-label="Log" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="brick" data-label="Bricks" aria-label="Bricks" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="crystal" data-label="Crystal block" aria-label="Crystal block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="grass" data-label="Grass block" aria-label="Grass block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="magic" data-label="Magic block" aria-label="Magic block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
-          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="gold" data-label="Gold block" aria-label="Gold block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+        <div class="picks" role="group" aria-label="Choose a 3D model or block">
+          <button class="slot" type="button" data-cat="weapons" data-kind="model3d" data-key="sunfire_greatsword" data-label="Sunfire Greatsword" aria-label="Sunfire Greatsword" aria-pressed="true"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="weapons" data-kind="model3d" data-key="astral_staff" data-label="Astral Crystal Staff" aria-label="Astral Crystal Staff" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="weapons" data-kind="model3d" data-key="bloodmoon_katana" data-label="Bloodmoon Katana" aria-label="Bloodmoon Katana" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="weapons" data-kind="model3d" data-key="dwarven_battleaxe" data-label="Dwarven Battleaxe" aria-label="Dwarven Battleaxe" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="weapons" data-kind="model3d" data-key="soulreaper_scythe" data-label="Soulreaper Scythe" aria-label="Soulreaper Scythe" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="weapons" data-kind="model3d" data-key="paladin_shield" data-label="Royal Kite Shield" aria-label="Royal Kite Shield" aria-pressed="false"><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="ranged" data-kind="model3d" data-key="ion_raygun" data-label="Ion Plasma Blaster" aria-label="Ion Plasma Blaster" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="ranged" data-kind="model3d" data-key="marksman_sniper" data-label="3D Marksman Sniper" aria-label="3D Marksman Sniper" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="ranged" data-kind="model3d" data-key="heavy_minigun" data-label="6-Barrel Minigun" aria-label="6-Barrel Minigun" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="ranged" data-kind="model3d" data-key="gilded_revolver" data-label="Gilded Six-Shooter" aria-label="Gilded Six-Shooter" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="ranged" data-kind="model3d" data-key="recurve_bow" data-label="Hunter's Recurve Bow" aria-label="Hunter's Recurve Bow" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="ranged" data-kind="model3d" data-key="siege_crossbow" data-label="Loaded Siege Crossbow" aria-label="Loaded Siege Crossbow" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="mobs" data-kind="mob" data-key="fox" data-label="Woodland Fox" aria-label="Woodland Fox" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="mobs" data-kind="mob" data-key="bird" data-label="Azure Songbird" aria-label="Azure Songbird" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="mobs" data-kind="mob" data-key="ghoul" data-label="Crypt Ghoul" aria-label="Crypt Ghoul" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="mobs" data-kind="mob" data-key="slime" data-label="Emerald Slime" aria-label="Emerald Slime" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="crystal" data-label="Arcane Crystal" aria-label="Arcane Crystal" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="ruby_ore" data-label="Ruby Ore" aria-label="Ruby Ore" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="magic" data-label="Runic Magic Block" aria-label="Runic Magic Block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="gold" data-label="Gilded Block" aria-label="Gilded Block" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="brick" data-label="Masonry Bricks" aria-label="Masonry Bricks" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
+          <button class="slot" type="button" data-cat="blocks" data-kind="block" data-key="log" data-label="Timber Log" aria-label="Timber Log" aria-pressed="false" hidden><canvas width="72" height="72" aria-hidden="true"></canvas></button>
         </div>
         <button class="btn sm" type="button" data-spin>Stop spinning</button>
       </div>
 
       <div class="plaque" style="padding:20px">
-        <h3 class="sh">Interactive 3D Pixel Art</h3>
-        <p>Every 16&times;16 texture turns into a crisp voxel model just like a dropped Minecraft item. <strong>Drag</strong> to spin, <strong>click</strong> or press <kbd>Enter</kbd> for the next piece, or use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> keys.</p>
-        <p>Inside SlothMod, the <strong>Art Picker</strong> offers multiple styles of every piece — and you can repaint any pixel live in 3D.</p>
-        <h3 class="sh" style="margin-top:20px">614 Synthesized Sounds + Music</h3>
-        <p>Click to preview real sounds generated inside SlothMod (plus seamless area &amp; boss music loops and playable 24-note instruments):</p>
-        <div class="sounds" role="group" aria-label="Sound samples">
-          <a class="btn sm" href="media/sound-squeak.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Squeak</a>
-          <a class="btn sm" href="media/sound-chime.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Chime</a>
-          <a class="btn sm" href="media/sound-zap.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Zap</a>
-          <a class="btn sm" href="media/sound-growl.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Growl</a>
-          <a class="btn sm" href="media/sound-rifle-shot.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Rifle shot</a>
-          <a class="btn sm" href="media/sound-reload.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Reload</a>
+        <h3 class="sh">Multi-Part 3D Weapons &amp; Models</h3>
+        <p>SlothMod builds real multi-box 3D weapons, floating-crystal staves, 3D scopes, blasters, shields and creatures with full-bright glowing cores. <strong>Drag</strong> to spin, <strong>click</strong> or press <kbd>Enter</kbd> for the next model, or use <kbd>&larr;</kbd> <kbd>&rarr;</kbd> keys.</p>
+        <p>Inside SlothMod, pick from multiple generated variants or sculpt and repaint any 3D box live.</p>
+        <h3 class="sh" style="margin-top:20px">Synthesized Music Loops &amp; Layered SFX</h3>
+        <p>Click to preview real procedural music themes and layered sound effects synthesized natively inside SlothMod:</p>
+        <div class="sounds" role="group" aria-label="Synthesized music and sound samples">
+          <a class="btn sm" href="media/sound-boss-theme.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Boss Battle Loop</a>
+          <a class="btn sm" href="media/sound-tavern-lute.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Tavern Lute</a>
+          <a class="btn sm" href="media/sound-starlight-chimes.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Starlight Chimes</a>
+          <a class="btn sm" href="media/sound-dragon-roar.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Dragon Roar</a>
+          <a class="btn sm" href="media/sound-arcane-spell.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Arcane Firestorm</a>
+          <a class="btn sm" href="media/sound-sword-cleave.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Relic Blade Slash</a>
+          <a class="btn sm" href="media/sound-plasma-blast.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Ion Plasma Shot</a>
+          <a class="btn sm" href="media/sound-victory-fanfare.ogg" data-sound><img src="img/ico-note.png" width="18" height="18" alt="">Victory Fanfare</a>
         </div>
       </div>
     </div>
@@ -967,7 +971,7 @@ footer .legal{font-size:.82rem;color:var(--muted)}
       <li class="cap-card"><span class="ic"><img src="img/ico-castle.png" width="30" height="30" alt=""></span><div><h3>Quests, Realms &amp; Campaigns</h3><p>Custom biomes, standing portals, multi-room dungeons, NPC dialogue cutscenes, moving ships and boss music.</p></div></li>
       <li class="cap-card"><span class="ic"><img src="img/ico-chip.png" width="30" height="30" alt=""></span><div><h3>Any AI &mdash; or $0 Local &amp; Offline</h3><p>Create visually offline for $0, or plug in cloud AIs, free tiers, LM Studio or Ollama with spending caps.</p></div></li>
       <li class="cap-card"><span class="ic"><img src="img/ico-shield.png" width="30" height="30" alt=""></span><div><h3>Safe Backups &amp; Crash Repair</h3><p>Sandbox builds, pre-build safety scans, full version history, one-click Undo and plain-English crash help.</p></div></li>
-      <li class="cap-card"><span class="ic"><img src="img/ico-chest.png" width="30" height="30" alt=""></span><div><h3>100% Yours to Publish</h3><p>Real <code>.jar</code> mods with player guides and banner cards — free to share or monetize on Modrinth &amp; CurseForge.</p></div></li>
+      <li class="cap-card"><span class="ic"><img src="img/ico-chest.png" width="30" height="30" alt=""></span><div><h3>100% Yours to Publish</h3><p>Real <code>.jar</code> mods with player guides and banner cards — free to share or monetize on Modrinth or wherever you share mods.</p></div></li>
     </ul>
 
     <div class="trust-split">
@@ -1012,10 +1016,10 @@ footer .legal{font-size:.82rem;color:var(--muted)}
         <span class="lock" aria-hidden="true"></span>
         <img src="img/ico-chest.png" width="44" height="44" alt="">
         <div class="cb">
-          <span class="ct">Release Chest &middot; SlothMod v1.0.0</span>
+          <span class="ct">Release Chest &middot; SlothMod v1.1.0</span>
           <span class="cv" id="chest-v">Direct Windows 10 &amp; 11 Installer (64-bit)</span>
           <div class="c-actions">
-            <a class="btn go sm" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.0.0_x64-setup.exe" rel="noopener">Download .exe</a>
+            <a class="btn go sm" href="https://github.com/DeusesPR/SlothMod/releases/latest/download/SlothMod_1.1.0_x64-setup.exe" rel="noopener">Download .exe</a>
             <a class="btn sm" href="https://github.com/DeusesPR/SlothMod/releases/latest" target="_blank" rel="noopener">All Releases</a>
           </div>
         </div>
@@ -1040,7 +1044,7 @@ footer .legal{font-size:.82rem;color:var(--muted)}
         <canvas class="mini" width="16" height="16" aria-hidden="true"></canvas>
       </div>
       <div class="faq-list">
-        <details class="faq-item"><summary>Is SlothMod really free &mdash; and do I own the mods I make?</summary><div class="ans"><p>Yes. SlothMod is free to download and use, and every mod you build belongs to you. Share, publish, or monetize your mods freely on Modrinth or CurseForge under the SlothMod Free Use Terms.</p></div></details>
+        <details class="faq-item"><summary>Is SlothMod really free &mdash; and do I own the mods I make?</summary><div class="ans"><p>Yes. SlothMod is free to download and use, and every mod you build belongs to you. Share, publish, or monetize your mods freely on Modrinth or wherever you share mods under the SlothMod Free Use Terms.</p></div></details>
         <details class="faq-item"><summary>Do I need to know how to code or pay for AI?</summary><div class="ans"><p>No. All six visual studios (World Sculptor, Build Studio, Whole-Game Studio, Brain &amp; Colonies, 3D Sculpt/Paint/FX, and Visual Blueprints) work 100% offline at $0 AI cost. If you want AI help, you can use free tiers, local models via LM Studio / Ollama, or your own API key with spending caps &mdash; and coders can open the built-in Java editor anytime.</p></div></details>
         <details class="faq-item" id="smartscreen"><summary>Why does Windows show a blue SmartScreen warning?</summary><div class="ans"><p>Because SlothMod is free and not paid-signed yet, Windows SmartScreen can show "Windows protected your PC" on first download. Click <strong>More info</strong>, then <strong>Run anyway</strong>. Only run installers downloaded directly from <strong>slothmod.com</strong> or <a href="https://github.com/DeusesPR/SlothMod/releases/latest" target="_blank" rel="noopener">GitHub Releases</a>.</p></div></details>
         <details class="faq-item"><summary>How does SlothMod keep my PC and worlds safe?</summary><div class="ans"><p>AI changes happen in a sandbox copy with version History and one-click Undo, and AI-written code is scanned before every build. Imported <code>.mca</code> worlds are never overwritten in place &mdash; SlothMod always exports a clean copy.</p></div></details>
